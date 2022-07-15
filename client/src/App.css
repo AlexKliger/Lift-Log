@@ -1,0 +1,23 @@
+/* Custom properties */
+:root {
+    --font-size-small: 16px;
+    --font-size-medium: 18px;
+    --font-size-large: 24px;
+    --font-size-header: 48px;
+}
+
+.header {
+    margin-bottom: 2.5rem;
+}
+
+.workout {
+    margin-bottom: 1.5rem;
+}
+
+.font-size--large {
+    font-size: var(--font-size-large)
+}
+
+.font-size--header {
+    font-size: var(--font-size-header)
+}

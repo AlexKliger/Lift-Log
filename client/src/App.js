@@ -1,22 +1,23 @@
 import {useEffect, useState} from 'react'
 import './App.css';
-import Log from "./components/Log"
+import Log from './components/Log'
+import Header from './components/Header'
 
 function App() {
   const [workouts, setWorkouts] = useState([])
 
   async function createWorkout(title) {
     try {
-         const res = await fetch('/workouts', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({title: title})
-        })
+      const res = await fetch('/workouts', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title: title})
+      })
 
-        const data = await res.json()
-        setWorkouts(data)
+      const data = await res.json()
+      setWorkouts(data)
     } catch (err) {
-        console.log(err)
+      console.log(err)
     }
 }
 
@@ -36,19 +37,48 @@ function App() {
 
   async function addLiftToWorkout(id, name) {
     try {
-        const res = await fetch(`/workouts/${id}`, {
+        const res = await fetch(`/workouts/addLift/${id}`, {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({name: name})
         })
-
+        
         const data = await res.json()
-        console.log(data)
         setWorkouts(data)
     } catch (err) {
-        console.log(err)
+        console.log('addLiftToWorkout:', err)
     }
-}
+  }
+
+  async function deleteLiftFromWorkout(workoutId, liftId) {
+    try {
+      const res = await fetch(`/workouts/deleteLift/${workoutId}`, {
+        method: 'put',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id: liftId})
+      })
+
+      const data = await res.json()
+      setWorkouts(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  async function updateLift(id, body) {
+    try {
+      const res = await fetch(`/workouts/updateLift/${id}`, {
+        method: 'put',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({...body})
+      })
+
+      const data = await res.json()
+      setWorkouts(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
     async function fetchWorkouts() {
@@ -64,9 +94,18 @@ function App() {
     fetchWorkouts()
   }, [])
 
+  const requests = {
+    createWorkout: createWorkout,
+    deleteWorkout: deleteWorkout,
+    addLiftToWorkout: addLiftToWorkout,
+    deleteLiftFromWorkout: deleteLiftFromWorkout,
+    updateLift: updateLift
+  }
+
   return (
     <div className="App">
-      <Log workouts={workouts} createWorkout={createWorkout} deleteWorkout={deleteWorkout} addLiftToWorkout={addLiftToWorkout} />
+      <Header requests={requests} />
+      <Log workouts={workouts} requests={requests} />
     </div>
   );
 }

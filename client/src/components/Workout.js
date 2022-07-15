@@ -1,19 +1,22 @@
 import Lift from './Lift'
 import AddLift from './AddLift'
 
-const Workout = ({workout, deleteWorkout, addLiftToWorkout}) => {
+const Workout = ({workout, requests}) => {
     return (
-        <section>
-            <h2>{workout.title}</h2>
-            <i className="fa fa-trash" onClick={() => deleteWorkout(workout._id)}></i>
-            <ul>
-                {workout.lifts.map((lift, index) => (
-                        <Lift lift={lift} />
-                    ))}
-                <li>
-                    <AddLift workoutId={workout._id} handleSubmit={addLiftToWorkout} />
-                </li>
-            </ul>
+        <section className="workout">
+          <h2 className="font-size--large">{workout.title}</h2>
+          <i className="fa fa-trash" onClick={() => requests.deleteWorkout(workout._id)}></i>
+          <ul>
+            {workout.lifts.map((lift, index) => (
+              <li>
+                  <i className="fa fa-trash" onClick={() => requests.deleteLiftFromWorkout(workout._id, lift._id)}></i>
+                  <Lift lift={lift} updateLift={requests.updateLift} />
+              </li>
+              ))}
+            <li>
+                <AddLift workoutId={workout._id} handleSubmit={requests.addLiftToWorkout} />
+            </li>
+          </ul>
         </section>
     )
 }

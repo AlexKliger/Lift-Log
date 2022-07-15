@@ -37,6 +37,31 @@ module.exports = {
             const workouts = await Workout.find()
             res.json(workouts)
         } catch (err) {
+            console.log('addLiftToWorkout:', err)
+        }
+    },
+    deleteLiftFromWorkout: async (req, res) => {
+        try {
+            const workout = await Workout.findOne({_id: req.params.id})
+            // workout.lifts = workout.lifts.filter(lift => lift._id.toString() !== req.body.id)
+            workout.lifts.id(req.body.id).remove()
+            await workout.save()
+            const workouts = await Workout.find()
+            res.json(workouts)
+        } catch (err) {
+            console.log(err)
+        }
+    },
+    updateLift: async (req, res) => {
+        try {
+            console.log('updateLift requested')
+            const workout = await Workout.findOne({'lifts._id': req.params.id})
+            const lift = workout.lifts.id(req.params.id)
+            lift.set(req.body)
+            await workout.save()
+            const workouts = await Workout.find()
+            res.json(workouts)
+        } catch (err) {
             console.log(err)
         }
     }
