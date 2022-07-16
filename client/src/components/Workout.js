@@ -4,19 +4,17 @@ import AddLift from './AddLift'
 const Workout = ({workout, requests}) => {
     return (
         <section className="workout">
-          <h2 className="font-size--large">{workout.title}</h2>
+          <h2 className="workout__name font-size--large">{workout.title}</h2>
           <i className="fa fa-trash" onClick={() => requests.deleteWorkout(workout._id)}></i>
-          <ul>
+          <ul className="workout__list">
             {workout.lifts.map((lift, index) => (
               <li>
-                  <i className="fa fa-trash" onClick={() => requests.deleteLiftFromWorkout(workout._id, lift._id)}></i>
                   <Lift lift={lift} updateLift={requests.updateLift} />
+                  <i className="fa fa-trash" onClick={() => requests.deleteLiftFromWorkout(workout._id, lift._id)}></i>
               </li>
               ))}
-            <li>
-                <AddLift workoutId={workout._id} handleSubmit={requests.addLiftToWorkout} />
-            </li>
           </ul>
+          <AddLift workoutId={workout._id} handleSubmit={requests.addLiftToWorkout} />
         </section>
     )
 }

@@ -10,8 +10,20 @@
     margin-bottom: 2.5rem;
 }
 
+.lift__name {
+    display: inline;
+}
+
 .workout {
     margin-bottom: 1.5rem;
+}
+
+.workout__name {
+    display: inline;
+}
+
+.workout__list {
+    margin-bottom: 1rem;
 }
 
 .font-size--large {
