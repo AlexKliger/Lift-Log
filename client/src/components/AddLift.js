@@ -8,7 +8,7 @@ const AddLift = ({workoutId, handleSubmit}) => {
     }
 
     function onSubmit(e) {
-        handleSubmit(workoutId, text)
+        handleSubmit(text)
         e.preventDefault()
     }
 

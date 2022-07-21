@@ -52,6 +52,18 @@ module.exports = {
             console.log(err)
         }
     },
+    updateWorkout: async (req, res) => {
+        try {
+            console.log('updateWorkout requested')
+            const workout = await Workout.findOne({'_id': req.params.id})
+            workout.set(req.body)
+            await workout.save()
+            const workouts = await Workout.find()
+            res.json(workouts)
+        } catch (err) {
+            console.log(err)
+        }
+    },
     updateLift: async (req, res) => {
         try {
             console.log('updateLift requested')

@@ -65,6 +65,22 @@ function App() {
     }
   }
 
+  async function updateWorkout(id, body) {
+    console.log('updateWorkout called')
+    try {
+      const res = await fetch(`/workouts/updateWorkout/${id}`, {
+        method: 'put',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({...body})
+      })
+
+      const data = await res.json()
+      setWorkouts(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   async function updateLift(id, body) {
     try {
       const res = await fetch(`/workouts/updateLift/${id}`, {
@@ -79,6 +95,7 @@ function App() {
       console.log(err)
     }
   }
+
 
   useEffect(() => {
     async function fetchWorkouts() {
@@ -99,11 +116,12 @@ function App() {
     deleteWorkout: deleteWorkout,
     addLiftToWorkout: addLiftToWorkout,
     deleteLiftFromWorkout: deleteLiftFromWorkout,
-    updateLift: updateLift
+    updateLift: updateLift,
+    updateWorkout: updateWorkout
   }
 
   return (
-    <div className="App">
+    <div className="l-centered">
       <Header requests={requests} />
       <Log workouts={workouts} requests={requests} />
     </div>
