@@ -35,25 +35,10 @@ function App() {
     }
   }
 
-  // async function deleteLiftFromWorkout(workoutId, liftId) {
-  //   try {
-  //     const res = await fetch(`/workouts/deleteLift/${workoutId}`, {
-  //       method: 'put',
-  //       headers: {'Content-Type': 'application/json'},
-  //       body: JSON.stringify({id: liftId})
-  //     })
-
-  //     const data = await res.json()
-  //     setWorkouts(data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
   async function updateWorkout(id, body) {
     console.log('updateWorkout called')
     try {
-      const res = await fetch(`/workouts/updateWorkout/${id}`, {
+      const res = await fetch(`/workouts/${id}`, {
         method: 'put',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({...body})

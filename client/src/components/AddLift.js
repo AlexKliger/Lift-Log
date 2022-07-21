@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-const AddLift = ({workoutId, handleSubmit}) => {
+const AddLift = ({handleSubmit}) => {
     const [text, setText] = useState('')
 
     function handleChange(e) {
