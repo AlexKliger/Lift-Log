@@ -29,29 +29,6 @@ module.exports = {
             console.log(err)
         }
     },
-    addLiftToWorkout: async (req, res) => {
-        try {
-            const workout = await Workout.findOne({_id: req.params.id})
-            workout.lifts.push({name: req.body.name})
-            await workout.save()
-            const workouts = await Workout.find()
-            res.json(workouts)
-        } catch (err) {
-            console.log('addLiftToWorkout:', err)
-        }
-    },
-    deleteLiftFromWorkout: async (req, res) => {
-        try {
-            const workout = await Workout.findOne({_id: req.params.id})
-            // workout.lifts = workout.lifts.filter(lift => lift._id.toString() !== req.body.id)
-            workout.lifts.id(req.body.id).remove()
-            await workout.save()
-            const workouts = await Workout.find()
-            res.json(workouts)
-        } catch (err) {
-            console.log(err)
-        }
-    },
     updateWorkout: async (req, res) => {
         try {
             console.log('updateWorkout requested')
