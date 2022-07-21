@@ -35,35 +35,20 @@ function App() {
     }
   }
 
-  async function addLiftToWorkout(id, name) {
-    try {
-        const res = await fetch(`/workouts/addLift/${id}`, {
-            method: 'put',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({name: name})
-        })
-        
-        const data = await res.json()
-        setWorkouts(data)
-    } catch (err) {
-        console.log('addLiftToWorkout:', err)
-    }
-  }
+  // async function deleteLiftFromWorkout(workoutId, liftId) {
+  //   try {
+  //     const res = await fetch(`/workouts/deleteLift/${workoutId}`, {
+  //       method: 'put',
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: JSON.stringify({id: liftId})
+  //     })
 
-  async function deleteLiftFromWorkout(workoutId, liftId) {
-    try {
-      const res = await fetch(`/workouts/deleteLift/${workoutId}`, {
-        method: 'put',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({id: liftId})
-      })
-
-      const data = await res.json()
-      setWorkouts(data)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  //     const data = await res.json()
+  //     setWorkouts(data)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   async function updateWorkout(id, body) {
     console.log('updateWorkout called')
@@ -114,10 +99,8 @@ function App() {
   const requests = {
     createWorkout: createWorkout,
     deleteWorkout: deleteWorkout,
-    addLiftToWorkout: addLiftToWorkout,
-    deleteLiftFromWorkout: deleteLiftFromWorkout,
-    updateLift: updateLift,
-    updateWorkout: updateWorkout
+    updateWorkout: updateWorkout,
+    updateLift: updateLift
   }
 
   return (

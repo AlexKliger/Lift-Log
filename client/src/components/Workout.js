@@ -6,6 +6,10 @@ const Workout = ({workout, requests}) => {
     requests.updateWorkout(workout._id, {lifts: [...workout.lifts, {name: name, sets: []}]})
   }
 
+  async function deleteLift(liftId) {
+    requests.updateWorkout(workout._id, {lifts: [...workout.lifts.filter(lift => lift._id !== liftId)]})
+  }
+
   return (
     <section className="workout">
       <h2 className="workout__name font-size--large">{workout.title}</h2>
@@ -14,7 +18,7 @@ const Workout = ({workout, requests}) => {
       {workout.lifts.map((lift, index) => (
         <li className="lift">
           <Lift lift={lift} updateLift={requests.updateLift} />
-          <i className="fa fa-trash" onClick={() => requests.deleteLiftFromWorkout(workout._id, lift._id)}></i>
+          <i className="fa fa-trash" onClick={() => deleteLift(lift._id)}></i>
         </li>
       ))}
       </ul>
