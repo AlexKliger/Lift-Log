@@ -12,7 +12,7 @@ const Workout = ({workout, requests}) => {
 
   return (
     <section className="workout">
-      <h2 className="workout__name font-size--large">{workout.title}</h2>
+      <h2 className="workout__title font-size--large">{workout.title}</h2>
       <i className="fa fa-trash" onClick={() => requests.deleteWorkout(workout._id)}></i>
       <ul className="workout__list">
       {workout.lifts.map((lift, index) => (
