@@ -7,7 +7,7 @@
 }
 
 .l-centered {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -23,13 +23,25 @@
     margin-bottom: 3rem;
 }
 
-.workout__title {
+    .workout__title {
+        display: inline;
+    }
+
+    .workout__list {
+        margin-bottom: 1rem;
+}
+
+.stepper {
     display: inline;
 }
 
-.workout__list {
-    margin-bottom: 1rem;
-}
+    .stepper__input {
+        position: relative;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 20px;
+        text-align: right;
+    }
 
 .font-size--large {
     font-size: var(--font-size-large)
