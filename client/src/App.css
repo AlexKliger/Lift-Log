@@ -41,13 +41,14 @@
 }
 
 .stepper {
-    display: inline;
+    display: flex;
+    align-items: center;
 }
 
     .stepper__input {
-        position: relative;
+        /* position: relative;
         -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
+        transform: translateY(-50%); */
         width: 20px;
         text-align: right;
     }
