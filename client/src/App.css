@@ -15,8 +15,17 @@
     margin-bottom: 2.5rem;
 }
 
+.lift:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
 .lift__name {
     display: inline;
+}
+
+.lift__sets {
+    display: flex;
+    justify-content: space-between;
 }
 
 .workout {
