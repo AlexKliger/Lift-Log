@@ -16,10 +16,7 @@ const Workout = ({workout, requests}) => {
       <i className="fa fa-trash" onClick={() => requests.deleteWorkout(workout._id)}></i>
       <ul className="workout__list">
       {workout.lifts.map((lift, index) => (
-        <li className="lift">
-          <Lift lift={lift} updateLift={requests.updateLift} />
-          <i className="fa fa-trash" onClick={() => deleteLift(lift._id)}></i>
-        </li>
+        <Lift lift={lift} updateLift={requests.updateLift} deleteLift={() => deleteLift(lift._id)} />
       ))}
       </ul>
       <AddLift handleSubmit={addLift} />
