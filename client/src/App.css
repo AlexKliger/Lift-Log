@@ -12,7 +12,10 @@
 }
 
 .header {
+    width: 100%;
     margin-bottom: 2.5rem;
+    position: fixed;
+    background-color: beige;
 }
 
 .lift:not(:last-child) {

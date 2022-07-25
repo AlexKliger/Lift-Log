@@ -89,7 +89,7 @@ function App() {
   }
 
   return (
-    <div className="l-centered">
+    <div>
       <Header requests={requests} />
       <Log workouts={workouts} requests={requests} />
     </div>

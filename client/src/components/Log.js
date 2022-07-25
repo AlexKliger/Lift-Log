@@ -2,7 +2,7 @@ import Workout from './Workout'
 
 const Log = ({workouts, requests}) => {
     return(
-        <main>
+        <main className="l-centered">
             {!workouts
             ?
             'Loading...'
