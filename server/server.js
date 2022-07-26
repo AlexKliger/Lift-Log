@@ -1,8 +1,14 @@
 const express = require('express')
+const session = require('express-session')
+const mongoose = require('mongoose')
+const passport = require('passport')
 const path = require('path')
-const connectDB = require('./config/db')
 const workoutsRoutes = require('./routes/workouts')
+const connectDB = require('./config/db')
 require('dotenv').config({path: './config/.env'})
+
+// Passport config
+require('./config/passport')(passport)
 
 connectDB()
 const app = express()
@@ -11,6 +17,18 @@ const app = express()
 app.use(express.static(path.join(__dirname, '../client/build')))
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
+// Sessions
+app.use(
+    session({
+        secret: 'my secret',
+        resave: false,
+        saveUninitialized: false,
+        store: new MongoStore({ mongooseConnection: mongoose.connection})
+    })
+)
+// Passport
+app.use(passport.initialize())
+app.use(passport.session())
 // Routes
 app.use('/workouts', workoutsRoutes)
 
