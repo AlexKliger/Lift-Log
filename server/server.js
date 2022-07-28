@@ -1,6 +1,7 @@
 const express = require('express')
 const session = require('express-session')
 const mongoose = require('mongoose')
+const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
 const path = require('path')
 const workoutsRoutes = require('./routes/workouts')
