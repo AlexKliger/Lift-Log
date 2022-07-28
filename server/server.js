@@ -5,6 +5,7 @@ const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
 const path = require('path')
 const workoutsRoutes = require('./routes/workouts')
+const authRoutes = require('./routes/auth')
 const connectDB = require('./config/db')
 require('dotenv').config({path: './config/.env'})
 
@@ -32,6 +33,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 // Routes
 app.use('/workouts', workoutsRoutes)
+app.use('/auth', authRoutes)
 
 app.get('*', (req, res) => {
     try {
