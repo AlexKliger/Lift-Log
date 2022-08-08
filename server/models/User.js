@@ -1,11 +1,15 @@
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
-    authId: {
+    username: {
         type: String,
         required: true
     },
-    displayName: {
+    hash: {
+        type: String,
+        required: true
+    },
+    salt: {
         type: String,
         required: true
     }
