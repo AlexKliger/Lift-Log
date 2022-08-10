@@ -9,11 +9,12 @@ const authRoutes = require('./routes/auth')
 const connectDB = require('./config/db')
 require('dotenv').config({path: './config/.env'})
 
-// Passport config
-require('./config/passport')(passport)
 
 connectDB()
 const app = express()
+
+// Passport config
+require('./config/passport')(passport)
 
 // Middleware
 app.use(express.static(path.join(__dirname, '../client/build')))
@@ -22,7 +23,7 @@ app.use(express.json())
 // Sessions
 app.use(
     session({
-        secret: 'my secret',
+        secret: 'charlie browneyes',
         resave: false,
         saveUninitialized: false,
         store: new MongoStore({ mongooseConnection: mongoose.connection})
