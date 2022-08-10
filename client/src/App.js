@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import './App.css';
 import Log from './components/Log'
 import Header from './components/Header'
+import Login from './components/Login'
 
 function App() {
   const [workouts, setWorkouts] = useState([])
@@ -17,7 +18,7 @@ function App() {
       const data = await res.json()
       setWorkouts(data)
     } catch (err) {
-      console.log(err)
+      console.err(err)
     }
 }
 
@@ -31,7 +32,7 @@ function App() {
         const data = await res.json()
         setWorkouts(data)
     } catch (err) {
-        console.log(err)
+        console.err(err)
     }
   }
 
@@ -47,7 +48,7 @@ function App() {
       const data = await res.json()
       setWorkouts(data)
     } catch (err) {
-      console.log(err)
+      console.err(err)
     }
   }
 
@@ -62,10 +63,21 @@ function App() {
       const data = await res.json()
       setWorkouts(data)
     } catch (err) {
-      console.log(err)
+      console.err(err)
     }
   }
 
+  async function login(username, password) {
+    try {
+      await fetch('/auth/login', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username: username, password: password})
+      })
+    } catch (err) {
+      console.err(err)
+    }
+  }
 
   useEffect(() => {
     async function fetchWorkouts() {
@@ -92,6 +104,7 @@ function App() {
     <div>
       <Header requests={requests} />
       <Log workouts={workouts} requests={requests} />
+      <Login handleSubmit={login} />
     </div>
   );
 }
