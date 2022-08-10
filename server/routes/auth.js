@@ -2,12 +2,8 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 
-router.post('/register', (req, res) => {
-
-})
-
 router.post('/login', passport.authenticate('local', {
-  failureRedirect: '/auth/fail',
+  failureRedirect: '/auth/fail/login',
   failureMessage: true
 }),
   async function(req, res) {
@@ -15,10 +11,9 @@ router.post('/login', passport.authenticate('local', {
   }
 )
 
-router.get('/fail', async (req, res) => {
+router.get('/fail/login', async (req, res) => {
   try {
-      console.log('login failed', 'username:', req.body.username, 'pw:', req.body.password)
-      res.json({'message': 'login failed'})
+      res.json({message: 'login failed'})
   } catch (err) {
       console.err(err)
   }
