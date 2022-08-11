@@ -5,7 +5,7 @@ const LiftSchema = require('../models/Lift')
 module.exports = {
     getWorkouts: async (req, res) => {
         try {
-            const workouts = await Workout.find()
+            const workouts = await Workout.find({userId: req.user.id})
             res.json(workouts)
         } catch (err) {
             console.log(err)
@@ -13,8 +13,8 @@ module.exports = {
     },
     createWorkout: async (req, res) => {
         try {
-            await Workout.create({title: req.body.title})
-            const workouts = await Workout.find()
+            await Workout.create({title: req.body.title, userId: req.user.id})
+            const workouts = await Workout.find({userId: req.user.id})
             res.json(workouts)
         } catch (err) {
             console.log(err)
@@ -31,7 +31,6 @@ module.exports = {
     },
     updateWorkout: async (req, res) => {
         try {
-            console.log('updateWorkout requested')
             const workout = await Workout.findOne({'_id': req.params.id})
             workout.set(req.body)
             await workout.save()
@@ -43,7 +42,6 @@ module.exports = {
     },
     updateLift: async (req, res) => {
         try {
-            console.log('updateLift requested')
             const workout = await Workout.findOne({'lifts._id': req.params.id})
             const lift = workout.lifts.id(req.params.id)
             lift.set(req.body)

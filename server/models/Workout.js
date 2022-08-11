@@ -10,7 +10,11 @@ const WorkoutSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    lifts: [LiftSchema]
+    lifts: [LiftSchema],
+    userId: {
+        type: String,
+        required: true
+    }
 })
 
 module.exports = mongoose.model('Workout', WorkoutSchema)

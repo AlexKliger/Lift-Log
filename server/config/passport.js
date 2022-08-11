@@ -33,7 +33,8 @@ module.exports = function (passport) {
 
     passport.serializeUser(function(user, done) {
         process.nextTick(function() {
-          return done(null, { username: user.username, hash: user.hash, salt: user.salt })
+          user = {username: user.username, hash: user.hash, salt: user.salt, id: user._id}
+          return done(null, user)
         });
       });
       
