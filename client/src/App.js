@@ -10,7 +10,7 @@ function App() {
   async function createWorkout(title) {
     try {
       const res = await fetch('/workouts', {
-        method: 'post',
+        method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({title: title})
       })
@@ -25,7 +25,7 @@ function App() {
   async function deleteWorkout(id) {
     try {
         const res = await fetch(`/workouts/${id}`, {
-            method: 'delete',
+            method: 'DELETE',
             headers: {'Content-Type': 'application/json'}
         })
         
@@ -40,7 +40,7 @@ function App() {
     console.log('updateWorkout called')
     try {
       const res = await fetch(`/workouts/${id}`, {
-        method: 'put',
+        method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({...body})
       })
@@ -55,7 +55,7 @@ function App() {
   async function updateLift(id, body) {
     try {
       const res = await fetch(`/workouts/updateLift/${id}`, {
-        method: 'put',
+        method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({...body})
       })
@@ -69,10 +69,23 @@ function App() {
 
   async function login(username, password) {
     try {
-      await fetch('/auth/login', {
-        method: 'post',
+      const res = await fetch('/auth/login', {
+        method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({username: username, password: password})
+      })
+
+      const data = await res.json()
+      console.log('data:', data)
+    } catch (err) {
+      console.err(err)
+    }
+  }
+
+  async function logout() {
+    try {
+      await fetch('auth/logout', {
+        method: 'DELETE'
       })
     } catch (err) {
       console.err(err)
@@ -82,7 +95,7 @@ function App() {
   useEffect(() => {
     async function fetchWorkouts() {
       const res = await fetch('/workouts', {
-        method: 'get',
+        method: 'GET',
         header: {'Content-Type': 'application/json'}
       })
 
@@ -105,6 +118,7 @@ function App() {
       <Header requests={requests} />
       <Log workouts={workouts} requests={requests} />
       <Login handleSubmit={login} />
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }

@@ -7,7 +7,7 @@ router.post('/login', passport.authenticate('local', {
   failureMessage: true
 }),
   async function(req, res) {
-    res.json({message: 'successful redirect'})
+    res.redirect('/')
   }
 )
 
@@ -17,6 +17,13 @@ router.get('/fail/login', async (req, res) => {
   } catch (err) {
       console.err(err)
   }
+})
+
+router.delete('/logout', async (req, res) => {
+  req.logout(function(err) {
+    if (err) { return next(err) }
+    res.redirect('/')
+  })
 })
 
 module.exports = router
