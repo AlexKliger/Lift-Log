@@ -7,7 +7,7 @@ router.post('/login', passport.authenticate('local', {
   failureMessage: true
 }),
   async function(req, res) {
-    res.redirect('/')
+    res.redirect('/workouts')
   }
 )
 
@@ -15,14 +15,14 @@ router.get('/fail/login', async (req, res) => {
   try {
       res.json({message: 'login failed'})
   } catch (err) {
-      console.err(err)
+      console.log(err)
   }
 })
 
 router.delete('/logout', async (req, res) => {
   req.logout(function(err) {
     if (err) { return next(err) }
-    res.redirect('/')
+    res.redirect(303, '/workouts')
   })
 })
 

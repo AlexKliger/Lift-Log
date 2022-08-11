@@ -63,7 +63,7 @@ function App() {
       const data = await res.json()
       setWorkouts(data)
     } catch (err) {
-      console.err(err)
+      console.log(err)
     }
   }
 
@@ -71,24 +71,29 @@ function App() {
     try {
       const res = await fetch('/auth/login', {
         method: 'POST',
+        credentials: 'include',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({username: username, password: password})
       })
-
       const data = await res.json()
-      console.log('data:', data)
+      setWorkouts(data)
     } catch (err) {
-      console.err(err)
+      console.log(err)
     }
   }
 
   async function logout() {
     try {
-      await fetch('auth/logout', {
-        method: 'DELETE'
+      const res = await fetch('auth/logout', {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {'Content-Type': 'application/json'}
       })
+      const data = await res.json()
+      console.log(data)
+      setWorkouts(data)
     } catch (err) {
-      console.err(err)
+      console.log(err)
     }
   }
 
