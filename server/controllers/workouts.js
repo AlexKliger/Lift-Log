@@ -4,6 +4,7 @@ const LiftSchema = require('../models/Lift')
 
 module.exports = {
     getWorkouts: async (req, res) => {
+        console.log('getWorkouts requested')
         try {
             const workouts = await Workout.find({userId: req.user.id})
             res.json(workouts)
@@ -12,6 +13,7 @@ module.exports = {
         }
     },
     createWorkout: async (req, res) => {
+        console.log('createWorkout requested')
         try {
             await Workout.create({title: req.body.title, userId: req.user.id})
             const workouts = await Workout.find({userId: req.user.id})
@@ -21,32 +23,35 @@ module.exports = {
         }
     },
     deleteWorkout: async (req, res) => {
+        console.log('deleteWorkout requested')
         try {
             await Workout.findOneAndDelete({ _id: req.params.id})
-            const workouts = await Workout.find()
+            const workouts = await Workout.find({userId: req.user.id})
             res.json(workouts)
         } catch (err) {
             console.log(err)
         }
     },
     updateWorkout: async (req, res) => {
+        console.log('updateWorkout requested')
         try {
             const workout = await Workout.findOne({'_id': req.params.id})
             workout.set(req.body)
             await workout.save()
-            const workouts = await Workout.find()
+            const workouts = await Workout.find({userId: req.user.id})
             res.json(workouts)
         } catch (err) {
             console.log(err)
         }
     },
     updateLift: async (req, res) => {
+        console.log('updateLift requested')
         try {
             const workout = await Workout.findOne({'lifts._id': req.params.id})
             const lift = workout.lifts.id(req.params.id)
             lift.set(req.body)
             await workout.save()
-            const workouts = await Workout.find()
+            const workouts = await Workout.find({userId: req.user.id})
             res.json(workouts)
         } catch (err) {
             console.log(err)
