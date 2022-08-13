@@ -10,8 +10,8 @@ const Log = ({workouts, createWorkout, deleteWorkout, updateWorkout, updateLift}
             ?
             'Loading...'
             :
-            workouts.map((workout, index) => (
-                <Workout workout={workout} deleteWorkout={deleteWorkout} updateWorkout={updateWorkout} updateLift={updateLift} />
+            workouts.map((workout, key) => (
+                <Workout workout={workout} deleteWorkout={deleteWorkout} updateWorkout={updateWorkout} updateLift={updateLift} key={key} />
             ))}
         </main>
     )

@@ -17,8 +17,8 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
       <h2 className="workout__title font-size--large">{workout.title}</h2>
       <i className="fa fa-trash" onClick={() => deleteWorkout(workout._id)}></i>
       <ul className="workout__list">
-      {workout.lifts.map((lift, index) => (
-        <Lift lift={lift} deleteLift={deleteLift} updateLift={updateLift} />
+      {workout.lifts.map((lift, key) => (
+        <Lift lift={lift} deleteLift={deleteLift} updateLift={updateLift} key={key} />
       ))}
       </ul>
       <AddLift handleSubmit={addLift} />
