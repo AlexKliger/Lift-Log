@@ -4,11 +4,11 @@ import AddSet from './AddSet'
 const Lift = ({lift, updateLift, deleteLift}) => {
     const addSet = useCallback((weight, reps) => {
         updateLift(lift._id, {sets: [...lift.sets, `${weight}x${reps}`]})
-    }, [])
+    }, [lift])
 
     const deleteSet = useCallback(() => {
         updateLift(lift._id, {sets: [...lift.sets].slice(0, lift.sets.length-1)})
-    }, [])
+    }, [lift])
 
     return (
         <li className="lift">
