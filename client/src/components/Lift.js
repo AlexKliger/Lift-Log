@@ -1,13 +1,14 @@
+import { useCallback } from 'react'
 import AddSet from './AddSet'
 
 const Lift = ({lift, updateLift, deleteLift}) => {
-    async function addSet(weight, reps) {
+    const addSet = useCallback((weight, reps) => {
         updateLift(lift._id, {sets: [...lift.sets, `${weight}x${reps}`]})
-    }
+    }, [])
 
-    async function deleteSet() {
+    const deleteSet = useCallback(() => {
         updateLift(lift._id, {sets: [...lift.sets].slice(0, lift.sets.length-1)})
-    }
+    }, [])
 
     return (
         <li className="lift">
