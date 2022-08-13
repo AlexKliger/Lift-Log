@@ -61,8 +61,12 @@ function App() {
       <Header />
       <h3>User: {user ? user.username : 'none'}</h3>
       <Log workouts={workouts} createWorkout={createWorkout} deleteWorkout={deleteWorkout} updateWorkout={updateWorkout} updateLift={updateLift} />
-      <Login handleSubmit={login} />
-      <button onClick={logout}>Logout</button>
+      {user
+        ?
+        <button onClick={logout}>Logout</button>
+        :
+        <Login handleSubmit={login} />
+      }
     </div>
   );
 }
