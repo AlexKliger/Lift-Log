@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { POST } from '../util/fetch'
 
-const Login = () => {
+const Login = ({ handleSubmit }) => {
     const [username, setUser] = useState('')
     const [password, setPass] = useState('')
 
@@ -11,8 +10,7 @@ const Login = () => {
     }
 
     function onSubmit(e) {
-      const config = {body: JSON.stringify({username: username, password: password})}
-      POST('auth/login', config)
+      handleSubmit(username, password)
       e.preventDefault()
     }
 
@@ -26,7 +24,7 @@ const Login = () => {
               name="username"
               type="text"
               value={username}
-              autocomplete="username"
+              autoComplete="username"
               required />
           </div>
           <div>
@@ -37,7 +35,7 @@ const Login = () => {
               name="password"
               type="password"
               value={password}
-              autocomplete="current-password"
+              autoComplete="current-password"
               required />
           </div>
           <div>
