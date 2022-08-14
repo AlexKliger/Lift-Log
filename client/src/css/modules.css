@@ -20,11 +20,16 @@ input[type=number] {
   }
 
 .lift:not(:last-child) {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.lift__header {
+    margin-bottom: 1rem;
 }
 
 .lift__name {
     display: inline;
+    margin-left: 1rem;
 }
 
 .lift__sets {
