@@ -1,4 +1,5 @@
-import './App.css';
+import './css/App.css'
+import './css/themes.css'
 import { useState, useEffect, useCallback } from 'react'
 import Log from './components/Log'
 import Header from './components/Header'

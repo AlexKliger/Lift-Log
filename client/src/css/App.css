@@ -19,7 +19,7 @@
 }
 
 .lift:not(:last-child) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .lift__name {
@@ -32,16 +32,16 @@
 }
 
 .workout {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
+    .workout__header {
+        margin-bottom: 1rem;
+    }
 
     .workout__title {
         display: inline;
-    }
-
-    .workout__list {
         margin-bottom: 1rem;
-}
+    }
 
 .stepper {
     display: flex;
@@ -55,14 +55,6 @@
         width: 20px;
         text-align: right;
     }
-
-.font-size--large {
-    font-size: var(--font-size-large)
-}
-
-.font-size--header {
-    font-size: var(--font-size-header)
-}
 
 /* input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
