@@ -14,14 +14,18 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
 
   return (
     <section className="workout">
-      <h2 className="workout__title font-size--large">{workout.title}</h2>
-      <i className="fa fa-trash" onClick={() => deleteWorkout(workout._id)}></i>
-      <ul className="workout__list">
+      <div className="workout__header">
+        <h2 className="workout__title font-size--large">{workout.title}</h2>
+        <i className="fa fa-trash" onClick={() => deleteWorkout(workout._id)}></i>
+      </div>
+      <ul>
       {workout.lifts.map((lift, key) => (
         <Lift lift={lift} deleteLift={deleteLift} updateLift={updateLift} key={key} />
       ))}
+        <li>
+          <AddLift handleSubmit={addLift} />
+        </li>
       </ul>
-      <AddLift handleSubmit={addLift} />
     </section>
   )
 }
