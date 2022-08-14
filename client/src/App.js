@@ -62,14 +62,9 @@ function App() {
 
   return (
     <div>
-      <Header user={user} />
+      <Header user={user} logout={logout} />
       <Log workouts={workouts} createWorkout={createWorkout} deleteWorkout={deleteWorkout} updateWorkout={updateWorkout} updateLift={updateLift} />
-      {user
-        ?
-        <button onClick={logout}>Logout</button>
-        :
-        <Login handleSubmit={login} />
-      }
+      {!user && <Login handleSubmit={login} />}
     </div>
   );
 }
