@@ -1,28 +1,28 @@
-import {useState} from 'react'
+import {useCallback, useState} from 'react'
 
 const AddSet = ({handleSubmit}) => {
   const [weight, setWeight] = useState(0)
   const [reps, setReps] = useState(0)
 
-  function handleChange(e) {
+  const handleChange = useCallback((e) => {
     if (e.target.parentNode.classList.contains('stepper--weight')) setWeight(e.target.value)
-    if(e.target.parentNode.classList.contains('stepper--reps')) setReps(e.target.value)
-  }
+    if (e.target.parentNode.classList.contains('stepper--reps')) setReps(e.target.value)
+  })
 
-  function stepUp(e) {
+  const stepUp = useCallback((e) => {
     if (e.target.parentNode.classList.contains('stepper--weight')) setWeight(weight + 1)
-    if(e.target.parentNode.classList.contains('stepper--reps')) setReps(reps + 1)
-  }
-  
-  function stepDown(e) {
-    if (e.target.parentNode.classList.contains('stepper--weight')) setWeight(weight - 1)
-    if(e.target.parentNode.classList.contains('stepper--reps')) setReps(reps - 1)
-  }
+    if (e.target.parentNode.classList.contains('stepper--reps')) setReps(reps + 1)
+  })
 
-  function onSubmit(e) {
+  const stepDown = useCallback((e) => {
+    if (e.target.parentNode.classList.contains('stepper--weight')) setWeight(weight - 1)
+    if (e.target.parentNode.classList.contains('stepper--reps')) setReps(reps - 1)
+  })
+  
+  const onSubmit = useCallback((e) => {
     handleSubmit(weight, reps)
     e.preventDefault()
-  }
+  })
 
   return (
       <form className="add-set" onSubmit={onSubmit}>
