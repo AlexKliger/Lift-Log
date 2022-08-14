@@ -1,9 +1,11 @@
+/* CSS imports */
 import './css/App.css'
 import './css/themes.css'
 import './css/modules.css'
 import { useState, useEffect, useCallback } from 'react'
-import Log from './components/Log'
+/* Component imports */
 import Header from './components/Header'
+import Log from './components/Log'
 import Login from './components/Login'
 import { GET, POST, DELETE, PUT } from './util/fetch'
 
@@ -60,8 +62,7 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <h3>User: {user ? user.username : 'none'}</h3>
+      <Header user={user} />
       <Log workouts={workouts} createWorkout={createWorkout} deleteWorkout={deleteWorkout} updateWorkout={updateWorkout} updateLift={updateLift} />
       {user
         ?

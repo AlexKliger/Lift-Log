@@ -13,7 +13,7 @@ const AddWorkout = ({handleSubmit}) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className="add-workout" onSubmit={onSubmit}>
             <input type="text" value={text} placeholder="Add workout" onChange={handleChange}></input>
             <input type="submit" value="+"></input>
         </form>
