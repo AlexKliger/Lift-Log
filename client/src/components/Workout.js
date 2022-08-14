@@ -5,11 +5,11 @@ import AddLift from './AddLift'
 const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
   const addLift = useCallback((name) => {
     updateWorkout(workout._id, {lifts: [...workout.lifts, {name: name, sets: []}]})
-  }, [])
+  }, [workout])
 
   const deleteLift = useCallback((liftId) => {
     updateWorkout(workout._id, {lifts: [...workout.lifts.filter(lift => lift._id !== liftId)]})
-  }, [])
+  }, [workout])
 
 
   return (
