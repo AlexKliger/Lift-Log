@@ -1,0 +1,45 @@
+.header {
+    width: 100%;
+    margin-bottom: 2.5rem;
+    position: fixed;
+    background-color: beige;
+}
+
+.lift:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.lift__name {
+    display: inline;
+}
+
+.lift__sets {
+    display: flex;
+    justify-content: space-between;
+}
+
+.workout {
+    margin-bottom: 2rem;
+}
+    .workout__header {
+        margin-bottom: 1rem;
+    }
+
+    .workout__title {
+        display: inline;
+        margin-bottom: 1rem;
+    }
+
+.stepper {
+    display: flex;
+    align-items: center;
+}
+
+    .stepper__input {
+        width: 20px;
+        text-align: right;
+    }
+
+input[type=number] {
+  -webkit-appearance: textfield;
+}
