@@ -1,3 +1,9 @@
+.add-set {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .add-workout {
     margin-bottom: 2rem;
 }
@@ -8,6 +14,10 @@
     position: fixed;
     background-color: beige;
 }
+
+input[type=number] {
+    -webkit-appearance: textfield;
+  }
 
 .lift:not(:last-child) {
     margin-bottom: 0.5rem;
@@ -22,6 +32,16 @@
     justify-content: space-between;
 }
 
+.stepper {
+    display: flex;
+    align-items: center;
+}
+
+    .stepper__input {
+        width: 20px;
+        text-align: right;
+    }
+
 .workout {
     margin-bottom: 2.5rem;
 }
@@ -33,17 +53,3 @@
         display: inline;
         margin-bottom: 1rem;
     }
-
-.stepper {
-    display: flex;
-    align-items: center;
-}
-
-    .stepper__input {
-        width: 20px;
-        text-align: right;
-    }
-
-input[type=number] {
-  -webkit-appearance: textfield;
-}

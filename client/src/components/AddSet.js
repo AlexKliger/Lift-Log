@@ -25,19 +25,19 @@ const AddSet = ({handleSubmit}) => {
   }
 
   return (
-      <form style={{"display": "flex", "justifyContent": "space-between", "alignItems": "center"}} onSubmit={onSubmit}>
+      <form className="add-set" onSubmit={onSubmit}>
         <input type="submit" value="+"></input>
 
         <div className="stepper stepper--weight">
-          <label htmlFor="weight">Weight</label>
-          <input className="stepper__input" type="number" value={weight} placeholder="weight" onChange={handleChange}></input>
+          <label htmlFor="weight">W</label>
+          <input className="stepper__input" type="number" value={weight} onChange={handleChange}></input>
           <i className="fa fa-angle-up font-size--header" onClick={stepUp}></i>
           <i className="fa fa-angle-down font-size--header" onClick={stepDown}></i>
         </div>
 
         <div className="stepper stepper--reps">
-          <label htmlFor="reps">Reps</label>
-          <input className="stepper__input" type="number" id='reps' value={reps} placeholder="reps" onChange={handleChange}></input>
+          <label htmlFor="reps">R</label>
+          <input className="stepper__input" type="number" id='reps' value={reps} onChange={handleChange}></input>
           <i className="fa fa-angle-up font-size--header" onClick={stepUp}></i>
           <i className="fa fa-angle-down font-size--header" onClick={stepDown}></i>
         </div>
