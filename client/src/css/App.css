@@ -13,3 +13,7 @@
     width: 80%;
     margin: 0 auto;
 }
+
+.app {
+    overflow: auto; /* Needed to fix react bug where root element does not extend to 100vh */
+}
