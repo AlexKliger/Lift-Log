@@ -13,7 +13,6 @@
     position: fixed;
     right: 0;
     transition: 1s;
-    background-color: gray;
 }
 
 .dropdown--hidden {
