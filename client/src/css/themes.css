@@ -1,7 +1,19 @@
+.bg-color--primary {
+    background-color: var(--color-primary);
+}
+
+.bg-color--secondary {
+    background-color: var(--color-secondary);
+}
+
+.font-color--tertiary {
+    color: var(--color-tertiary);
+}
+
 .font-size--large {
-    font-size: var(--font-size-large)
+    font-size: var(--font-size-large);
 }
 
 .font-size--header {
-    font-size: var(--font-size-header)
+    font-size: var(--font-size-header);
 }
