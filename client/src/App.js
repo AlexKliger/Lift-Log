@@ -12,6 +12,7 @@ import { GET, POST, DELETE, PUT } from './util/fetch'
 function App() {
   const [user, setUser] = useState()
   const [workouts, setWorkouts] = useState([])
+  const [dropdownVisible, setDropdownVisible] = useState(false)
 
   const createWorkout = useCallback(async (title) => {
     const config = {body: JSON.stringify({title: title})}
@@ -60,13 +61,35 @@ function App() {
     getWorkouts()
 }, [])
 
+  useEffect(() => {
+    // Clicking anywhere should hide the dropdown window if it is open.
+    function onClick() {
+      setDropdownVisible(false)
+    }
+    const app = document.querySelector('.app')
+    app.addEventListener('click', onClick)
+    // Clean up
+    return () => app.removeEventListener('click', onClick)
+  })
+
   return (
-    <div>
-      <Header user={user} logout={logout} />
-      <Log workouts={workouts} createWorkout={createWorkout} deleteWorkout={deleteWorkout} updateWorkout={updateWorkout} updateLift={updateLift} />
+    <div className="app">
+      <Header
+        user={user}
+        logout={logout}
+        dropdownVisible={dropdownVisible}
+        setDropdownVisible={setDropdownVisible}
+      />
+      <Log
+        workouts={workouts}
+        createWorkout={createWorkout}
+        deleteWorkout={deleteWorkout}
+        updateWorkout={updateWorkout}
+        updateLift={updateLift}
+      />
       {!user && <Login handleSubmit={login} />}
     </div>
-  );
+  )
 }
 
 export default App;
