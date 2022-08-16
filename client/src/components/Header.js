@@ -3,8 +3,8 @@ import Dropdown from './Dropdown.js'
 const Header = ({user, logout, dropdownVisible, setDropdownVisible }) => {
   return (
     <>
-    <header className="header">
-      <h1 className="font-size--header">Lifter's Log</h1>
+    <header className="header bg-color--secondary">
+      <h1 className="font-size--header font-color--tertiary">Lifter's Log</h1>
 
       <Dropdown
         visible={dropdownVisible}
