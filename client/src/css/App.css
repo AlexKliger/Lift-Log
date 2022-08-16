@@ -3,6 +3,10 @@
     --font-size-medium: 18px;
     --font-size-large: 24px;
     --font-size-header: 48px;
+
+    --color-primary: #5b8696;
+    --color-secondary: #0e0e10;
+    --color-tertiary: #ffffff;
 }
 
 .l-centered {
