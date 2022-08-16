@@ -1,16 +1,23 @@
-const Header = ({ user, logout }) => {
-    return (
-        <>
-        <header className="header">
-            <h1 className="font-size--header">Lift log</h1>
-            <h3>User: {user ? user.username : 'none'}</h3>
-            {user && <button onClick={logout}>Logout</button>}
-        </header>
-        <div style={{"height": "100px"}}>
+import { useState } from "react"
 
-        </div>
-        </>
-    )
+const Header = ({user, logout, dropdownVisible, setDropdownVisible }) => {
+  return (
+    <>
+    <header className="header">
+      <h1 className="font-size--header">Lifter's Log</h1>
+
+      <div className={`dropdown ${dropdownVisible ? "": "dropdown--hidden"}`}>
+        <h3 className="font-size--large">User: {user ? user.username : 'none'}</h3>
+        {user && <button onClick={logout}>Logout</button>}
+      </div>
+
+      <i onClick={() => {setDropdownVisible(!dropdownVisible)}} className="dropdown-toggle fa fa-ellipsis-v font-size--large"></i>
+    </header>
+    <div style={{"height": "100px"}}>
+
+    </div>
+    </>
+  )
 }
 
 export default Header

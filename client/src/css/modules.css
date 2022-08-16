@@ -8,7 +8,26 @@
     margin-bottom: 2rem;
 }
 
+.dropdown {
+    padding: 2rem;
+    position: fixed;
+    right: 0;
+    transition: 1s;
+    background-color: gray;
+}
+
+.dropdown--hidden {
+    transform: translate(100%, -100%)
+}
+
+.dropdown-toggle {
+    margin-right: 1rem;
+}
+
 .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     margin-bottom: 2.5rem;
     position: fixed;
@@ -56,5 +75,5 @@ input[type=number] {
 
     .workout__title {
         display: inline;
-        margin-bottom: 1rem;
+        margin: 0 1rem 1rem 0;
     }
