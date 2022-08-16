@@ -73,7 +73,7 @@ function App() {
   })
 
   return (
-    <div className="app">
+    <div className="app bg-color--primary font-color--tertiary">
       <Header
         user={user}
         logout={logout}
