@@ -1,6 +1,6 @@
-import {useCallback, useState} from 'react'
+import { useCallback, useState } from 'react'
 
-const AddSet = ({handleSubmit}) => {
+const AddSet = ({ handleSubmit }) => {
   const [weight, setWeight] = useState(0)
   const [reps, setReps] = useState(0)
 
@@ -10,13 +10,13 @@ const AddSet = ({handleSubmit}) => {
   })
 
   const stepUp = useCallback((e) => {
-    if (e.target.parentNode.classList.contains('stepper--weight')) setWeight(weight + 1)
+    if (e.target.parentNode.classList.contains('stepper--weight')) setWeight(weight + 5)
     if (e.target.parentNode.classList.contains('stepper--reps')) setReps(reps + 1)
   })
 
   const stepDown = useCallback((e) => {
-    if (e.target.parentNode.classList.contains('stepper--weight')) setWeight(weight - 1)
-    if (e.target.parentNode.classList.contains('stepper--reps')) setReps(reps - 1)
+    if (e.target.parentNode.classList.contains('stepper--weight') && weight > 0) setWeight(weight - 5)
+    if (e.target.parentNode.classList.contains('stepper--reps') && reps > 0) setReps(reps - 1)
   })
   
   const onSubmit = useCallback((e) => {
