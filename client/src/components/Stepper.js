@@ -1,23 +1,10 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
 
-const Stepper = ({handleChange, stepSize}) => {
-  const [number, setNumber] = useState(0)
-
-  const onChange = useCallback((e) => {
-    setNumber(e.target.value)
-  }, [])
-
-  const stepUp = useCallback(() => {
-    setNumber(number + stepSize)
-    handleChange(number)
-  }, [number, stepSize])
-
-  const stepDown = useCallback(() => {
-    if (number > 0) {
-      setNumber(number - stepSize) 
-      handleChange(number)
-    }
-  }, [number, stepSize])
+const Stepper = ({onChange, value, stepSize}) => {
+  const handleChange = useCallback((e) => {
+    console.log("Stepper -> handleChange(e:", e, ")")
+    onChange(e.target.value)
+  })
 
   return (
     <div className="stepper">
@@ -25,11 +12,17 @@ const Stepper = ({handleChange, stepSize}) => {
       <input
         className="stepper__input"
         type="number"
-        value={number}
-        onChange={onChange}>
+        value={value}
+        onChange={handleChange}>
       </input>
-      <i className="fa fa-angle-up font-size--header" onClick={stepUp}></i>
-      <i className="fa fa-angle-down font-size--header" onClick={stepDown}></i>
+      <i
+        className="fa fa-angle-up font-size--header"
+        onClick={() => onChange(value + stepSize)}>
+      </i>
+      <i
+        className="fa fa-angle-down font-size--header"
+        onClick={() => onChange(value - stepSize)}>
+      </i>
     </div>
   )
 }
