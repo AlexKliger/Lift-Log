@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react"
 
-const Form = ({handleSubmit, styling, placeholder}) => {
+const AddItem = ({handleSubmit, styling, placeholder}) => {
   const [text, setText] = useState("")
 
   const handleChange = useCallback((e) => {
@@ -13,13 +13,14 @@ const Form = ({handleSubmit, styling, placeholder}) => {
   }, [text])
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className={styling || ""} onSubmit={onSubmit}>
       <input
         type="text"
         value={text}
         placeholder={placeholder || ""}
         onChange={handleChange}>
       </input>
+
       <input
         type="submit"
         value="+">
@@ -28,4 +29,4 @@ const Form = ({handleSubmit, styling, placeholder}) => {
   )
 }
 
-export default Form
+export default AddItem
