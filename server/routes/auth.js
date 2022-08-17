@@ -12,6 +12,7 @@ router.post('/login', passport.authenticate('local', {
 )
 
 router.get('/fail/login', async (req, res) => {
+  console.log('login requested')
   try {
       res.json({message: 'login failed'})
   } catch (err) {
@@ -20,10 +21,16 @@ router.get('/fail/login', async (req, res) => {
 })
 
 router.delete('/logout', async (req, res) => {
+  console.log('logout requested')
   req.logout(function(err) {
     if (err) { return next(err) }
     res.redirect(303, '/workouts')
   })
+})
+
+router.get('/user', async (req, res) => {
+  console.log('user requested:', req.user ? req.user.username : 'none')
+  res.send(req.user)
 })
 
 module.exports = router
