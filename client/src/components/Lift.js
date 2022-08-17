@@ -1,8 +1,9 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import AddSet from './AddSet'
 
 const Lift = ({lift, updateLift, deleteLift}) => {
     const addSet = useCallback((weight, reps) => {
+        console.log(`Lift -> addSet(weight: ${weight}, reps: ${reps})`)
         updateLift(lift._id, {sets: [...lift.sets, `${weight}x${reps}`]})
     }, [lift])
 
@@ -22,6 +23,7 @@ const Lift = ({lift, updateLift, deleteLift}) => {
         ))}
           {lift.sets.length > 0 && <span><i onClick={deleteSet} className="fa fa-minus"></i></span>}
         </div>
+
         <AddSet handleSubmit={addSet} />
       </li>
     )
