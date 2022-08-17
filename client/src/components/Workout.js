@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import Lift from './Lift'
-import AddLift from './AddLift'
+import AddItem from './AddItem'
 
 const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
   const addLift = useCallback((name) => {
@@ -23,7 +23,8 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
         <Lift lift={lift} deleteLift={deleteLift} updateLift={updateLift} key={key} />
       ))}
         <li>
-          <AddLift handleSubmit={addLift} />
+          <AddItem
+            handleSubmit={addLift} placeholder="Add lift" />
         </li>
       </ul>
     </section>

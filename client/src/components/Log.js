@@ -1,11 +1,11 @@
 import Workout from './Workout'
-import AddWorkout from './AddWorkout'
+import AddItem from './AddItem'
 
 const Log = ({workouts, createWorkout, deleteWorkout, updateWorkout, updateLift}) => {
 
     return(
         <main className="l-centered">
-            <AddWorkout handleSubmit={createWorkout} />
+            <AddItem handleSubmit={createWorkout} placeholder="Add workout" />
             {!workouts
             ?
             'Loading...'
