@@ -1,6 +1,6 @@
 import Dropdown from './Dropdown.js'
 
-const Header = ({ user, logout, dropdownVisible, setDropdownVisible, setTheme }) => {
+const Header = ({ user, logout, dropdownVisible, setDropdownVisible, theme, setTheme }) => {
   return (
     <>
     <header className="header bg-color--secondary">
@@ -10,6 +10,7 @@ const Header = ({ user, logout, dropdownVisible, setDropdownVisible, setTheme })
         visible={dropdownVisible}
         user={user}
         logout={logout}
+        theme={theme}
         setTheme={setTheme}
       />
 
