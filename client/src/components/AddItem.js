@@ -9,6 +9,7 @@ const AddItem = ({handleSubmit, styling, placeholder}) => {
 
   const onSubmit = useCallback((e) => {
     handleSubmit(text)
+    setText("")
     e.preventDefault()
   }, [text])
 
