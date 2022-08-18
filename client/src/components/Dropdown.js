@@ -2,6 +2,7 @@ import { useCallback} from "react"
 import Checkbox from "./Checkbox"
 
 const Dropdown = ({ visible, user, logout, theme, setTheme }) => {
+
   return (
     <div className={`dropdown bg-color--primary box-shadow ${visible ? "": "dropdown--hidden"}`}>
       <h3 className="font-size--large">User: {user ? user.username : 'none'}</h3>
