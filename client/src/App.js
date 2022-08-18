@@ -1,19 +1,20 @@
-/* CSS imports */
-import './css/App.css'
-import './css/themes.css'
-import './css/modules.css'
 import { useState, useEffect, useCallback } from 'react'
+import useLocalStorage from './hooks/useLocalStorage'
 /* Component imports */
 import Header from './components/Header'
 import Log from './components/Log'
 import Login from './components/Login'
 import { GET, POST, DELETE, PUT } from './util/fetch'
+/* CSS imports */
+import './css/App.css'
+import './css/themes.css'
+import './css/modules.css'
 
 function App() {
   const [user, setUser] = useState()
   const [workouts, setWorkouts] = useState([])
   const [dropdownVisible, setDropdownVisible] = useState(false)
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useLocalStorage('theme', 'light')
 
   const createWorkout = useCallback(async (title) => {
     const config = {body: JSON.stringify({title: title})}
@@ -80,6 +81,7 @@ function App() {
         logout={logout}
         dropdownVisible={dropdownVisible}
         setDropdownVisible={setDropdownVisible}
+        theme={theme}
         setTheme={setTheme}
       />
       <Log
