@@ -13,6 +13,7 @@ function App() {
   const [user, setUser] = useState()
   const [workouts, setWorkouts] = useState([])
   const [dropdownVisible, setDropdownVisible] = useState(false)
+  const [theme, setTheme] = useState('light')
 
   const createWorkout = useCallback(async (title) => {
     const config = {body: JSON.stringify({title: title})}
@@ -73,12 +74,13 @@ function App() {
   })
 
   return (
-    <div className="app bg-color--primary font-color--tertiary">
+    <div className="app bg-color--primary font-color--tertiary" data-theme={theme}>
       <Header
         user={user}
         logout={logout}
         dropdownVisible={dropdownVisible}
         setDropdownVisible={setDropdownVisible}
+        setTheme={setTheme}
       />
       <Log
         workouts={workouts}

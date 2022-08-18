@@ -1,6 +1,6 @@
 import Dropdown from './Dropdown.js'
 
-const Header = ({user, logout, dropdownVisible, setDropdownVisible }) => {
+const Header = ({ user, logout, dropdownVisible, setDropdownVisible, setTheme }) => {
   return (
     <>
     <header className="header bg-color--secondary">
@@ -10,6 +10,7 @@ const Header = ({user, logout, dropdownVisible, setDropdownVisible }) => {
         visible={dropdownVisible}
         user={user}
         logout={logout}
+        setTheme={setTheme}
       />
 
       <i onClick={() => {setDropdownVisible(!dropdownVisible)}} className="dropdown-toggle fa fa-ellipsis-v font-size--large"></i>
