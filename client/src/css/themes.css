@@ -1,3 +1,15 @@
+[data-theme="light"] {
+    --color-primary: #ffffff;
+    --color-secondary: #f9f9f9;
+    --color-tertiary: #000000;
+}
+
+[data-theme="dark"] {
+    --color-primary: #202020;
+    --color-secondary: #0e0e10;
+    --color-tertiary: #ffffff;
+}
+
 .bg-color--primary {
     background-color: var(--color-primary);
 }
