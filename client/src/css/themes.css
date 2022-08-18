@@ -33,7 +33,7 @@
 }
 
 .font-size--header {
-    font-size: var(--font-size-header);
+    font-size: var(--font-size--header);
 }
 
 .box-shadow {
