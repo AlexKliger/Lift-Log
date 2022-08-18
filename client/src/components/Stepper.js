@@ -16,12 +16,14 @@ const Stepper = ({onChange, value, stepSize}) => {
         onChange={handleChange}>
       </input>
       <i
-        className="fa fa-angle-up font-size--header"
-        onClick={() => onChange(value + stepSize)}>
+        className="fa fa-angle-up color-font--secondary font-size--header"
+        onClick={() => onChange(value + stepSize)}
+      >
       </i>
       <i
-        className="fa fa-angle-down font-size--header"
-        onClick={() => onChange(value - stepSize)}>
+        className="fa fa-angle-down color-font--secondary font-size--header"
+        onClick={() => onChange(value - stepSize)}
+      >
       </i>
     </div>
   )

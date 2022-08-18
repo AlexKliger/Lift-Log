@@ -1,6 +1,6 @@
 .add-set {
     display: flex;
-    justify-content: space-around;
+    gap: 1.5rem;
     align-items: center;
 }
 
@@ -9,9 +9,10 @@
 }
 
 .dropdown {
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     position: fixed;
     right: 0;
+    top: 0;
     transition: 1s;
 }
 
@@ -20,7 +21,7 @@
 }
 
 .dropdown-toggle {
-    margin-right: 1rem;
+    padding: 0.5rem 1.5rem;
 }
 
 .header {
@@ -31,6 +32,10 @@
     margin-bottom: 2.5rem;
     position: fixed;
 }
+
+    .header__title {
+        padding: 0.5rem 1rem;
+    }
 
 input[type=number] {
     -webkit-appearance: textfield;

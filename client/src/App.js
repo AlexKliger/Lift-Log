@@ -75,7 +75,7 @@ function App() {
   })
 
   return (
-    <div className="app bg-color--primary font-color--tertiary" data-theme={theme}>
+    <div className="app color-bg--primary color-font--primary" data-theme={theme}>
       <Header
         user={user}
         logout={logout}
