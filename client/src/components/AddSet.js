@@ -12,7 +12,9 @@ const AddSet = ({ handleSubmit }) => {
 
   return (
     <form className="add-set" onSubmit={onSubmit}>
-      <input type="submit" value="+"></input>
+      <button className="btn-add" type="submit" value="+">
+        <i className="fa fa-plus color-font--secondary font-size--large"></i>
+      </button>
 
       <Stepper
         value={weight}

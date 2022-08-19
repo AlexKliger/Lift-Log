@@ -8,6 +8,11 @@
     margin-bottom: 2rem;
 }
 
+.btn-add {
+    background: none;
+    border: none;
+}
+
 .dropdown {
     padding: 1.5rem 2rem;
     position: fixed;
