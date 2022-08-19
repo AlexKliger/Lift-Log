@@ -18,8 +18,8 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
       <div className="workout__header">
         <h2 className="workout__title font-size--large">{workout.title}</h2>
         <i className="fa fa-trash" onClick={() => deleteWorkout(workout._id)}></i>
-        <Link to="/edit">
-          <i style={{"float": "right"}} className="fa fa-pencil"></i>
+        <Link to={`edit/${workout._id}`}>
+          <i className="fa fa-pencil"></i>
         </Link>
       </div>
       <ul>
