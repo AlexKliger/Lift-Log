@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import { useCallback} from "react"
->>>>>>> d59163fb72f543a737e16e217bdbaf1f0273a630
 import Checkbox from "./Checkbox"
 
 const Dropdown = ({ visible, user, logout, theme, setTheme }) => {
