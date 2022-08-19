@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import useLocalStorage from './hooks/useLocalStorage'
 /* Component imports */
+import EditWorkout from './components/EditWorkout'
 import Header from './components/Header'
 import Log from './components/Log'
 import Login from './components/Login'
@@ -85,26 +86,25 @@ function App() {
         theme={theme}
         setTheme={setTheme}
       />
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={<Log
-                        workouts={workouts}
-                        createWorkout={createWorkout}
-                        deleteWorkout={deleteWorkout}
-                        updateWorkout={updateWorkout}
-                        updateLift={updateLift}
-                    />}
-          >
-          </Route>
-          <Route
-            path="/settings"
-            element={<h1>SETTINGS</h1>}
-          >
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<Log
+                      workouts={workouts}
+                      createWorkout={createWorkout}
+                      deleteWorkout={deleteWorkout}
+                      updateWorkout={updateWorkout}
+                      updateLift={updateLift}
+                  />}
+        >
+        </Route>
+        <Route
+          path="/edit/:id"
+          element={<EditWorkout workouts={workouts} />}
+        >
+        </Route>
+      </Routes>
+
       {!user && <Login handleSubmit={login} />}
     </div>
   )
