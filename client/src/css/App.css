@@ -1,8 +1,8 @@
 :root {
-    --font-size-small: 16px;
-    --font-size-medium: 18px;
-    --font-size-large: 24px;
-    --font-size-header: 48px;
+    --font-size--small: 16px;
+    --font-size--medium: 18px;
+    --font-size--large: 24px;
+    --font-size--header: 48px;
 }
 
 .l-centered {

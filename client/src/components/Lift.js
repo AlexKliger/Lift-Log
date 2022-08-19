@@ -21,7 +21,7 @@ const Lift = ({lift, updateLift, deleteLift}) => {
         {lift.sets.map((set, key) => (
           <span key={key}>{set}</span>
         ))}
-          {lift.sets.length > 0 && <span><i onClick={deleteSet} className="fa fa-minus"></i></span>}
+          {lift.sets.length > 0 && <span><i onClick={deleteSet} className="fa fa-minus color-font--secondary"></i></span>}
         </div>
 
         <AddSet handleSubmit={addSet} />

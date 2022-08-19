@@ -9,11 +9,12 @@ const AddItem = ({handleSubmit, styling, placeholder}) => {
 
   const onSubmit = useCallback((e) => {
     handleSubmit(text)
+    setText("")
     e.preventDefault()
   }, [text])
 
   return (
-    <form className={styling || ""} onSubmit={onSubmit}>
+    <form className={`add-item ${styling || ""}`} onSubmit={onSubmit}>
       <input
         type="text"
         value={text}
@@ -21,10 +22,9 @@ const AddItem = ({handleSubmit, styling, placeholder}) => {
         onChange={handleChange}>
       </input>
 
-      <input
-        type="submit"
-        value="+">
-      </input>
+      <button className="btn-add" type="submit">
+        <i className="fa fa-plus color-font--secondary font-size--large"></i>
+      </button>
     </form>
   )
 }
