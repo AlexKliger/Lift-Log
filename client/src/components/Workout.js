@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import Lift from './Lift'
 import AddItem from './AddItem'
 
@@ -17,6 +18,9 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
       <div className="workout__header">
         <h2 className="workout__title font-size--large">{workout.title}</h2>
         <i className="fa fa-trash" onClick={() => deleteWorkout(workout._id)}></i>
+        <Link to="/edit">
+          <i style={{"float": "right"}} className="fa fa-pencil"></i>
+        </Link>
       </div>
       <ul>
       {workout.lifts.map((lift, key) => (
@@ -24,7 +28,9 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
       ))}
         <li>
           <AddItem
-            handleSubmit={addLift} placeholder="Add lift" />
+            handleSubmit={addLift}
+            placeholder="Add lift"
+          />
         </li>
       </ul>
     </section>
