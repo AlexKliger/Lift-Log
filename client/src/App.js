@@ -100,7 +100,10 @@ function App() {
         </Route>
         <Route
           path="/edit/:id"
-          element={<EditWorkout workouts={workouts} />}
+          element={<EditWorkout
+                      workouts={workouts}
+                      updateWorkout={updateWorkout}
+                  />}
         >
         </Route>
       </Routes>
