@@ -14,7 +14,7 @@ const AddItem = ({handleSubmit, styling, placeholder}) => {
   }, [text])
 
   return (
-    <form className={styling || ""} onSubmit={onSubmit}>
+    <form className={`add-item ${styling || ""}`} onSubmit={onSubmit}>
       <input
         type="text"
         value={text}

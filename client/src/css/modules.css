@@ -1,3 +1,8 @@
+.add-item {
+    display: flex;
+    gap: 0.75rem;
+}
+
 .add-set {
     display: flex;
     gap: 1.5rem;
