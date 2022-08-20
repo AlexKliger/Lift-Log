@@ -10,10 +10,19 @@ const WorkoutSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    lifts: [LiftSchema],
+    lifts: {
+        type: [LiftSchema]
+    },
     userId: {
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    notes: {
+        type: String
     }
 })
 

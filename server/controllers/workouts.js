@@ -15,7 +15,7 @@ module.exports = {
     createWorkout: async (req, res) => {
         console.log('createWorkout requested')
         try {
-            await Workout.create({title: req.body.title, userId: req.user.id})
+            await Workout.create({...req.body, userId: req.user.id})
             const workouts = await Workout.find({userId: req.user.id})
             res.json(workouts)
         } catch (err) {

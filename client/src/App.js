@@ -18,8 +18,8 @@ function App() {
   const [dropdownVisible, setDropdownVisible] = useState(false)
   const [theme, setTheme] = useLocalStorage('theme', 'light')
 
-  const createWorkout = useCallback(async (title) => {
-    const config = {body: JSON.stringify({title: title})}
+  const createWorkout = useCallback(async (body) => {
+    const config = {body: JSON.stringify(body)}
     setWorkouts(await POST(`/workouts`, config))
   }, [])
 
@@ -91,7 +91,6 @@ function App() {
           path="/"
           element={<Log
                       workouts={workouts}
-                      createWorkout={createWorkout}
                       deleteWorkout={deleteWorkout}
                       updateWorkout={updateWorkout}
                       updateLift={updateLift}
