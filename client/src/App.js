@@ -105,17 +105,14 @@ function App() {
                         workouts={workouts}
                         updateWorkout={updateWorkout}
                     />}
-          >
-          </Route>
+          ></Route>
 
           <Route
             path="new"
             element={<EditWorkout
-                      updateWorkout={updateWorkout}
+                      createWorkout={createWorkout}
                     />}
-          >
-
-          </Route>
+          ></Route>
         </Route>
       </Routes>
 
