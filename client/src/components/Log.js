@@ -14,7 +14,7 @@ const Log = ({workouts, createWorkout, deleteWorkout, updateWorkout, updateLift}
       ?
       'Loading...'
       :
-      workouts.map((workout, key) => (
+      workouts.reverse().map((workout, key) => (
         <Workout
           workout={workout}
           deleteWorkout={deleteWorkout}
