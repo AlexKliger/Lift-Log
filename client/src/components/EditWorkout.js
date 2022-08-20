@@ -1,14 +1,22 @@
 import { useCallback, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
-const EditWorkout = ({ workouts, updateWorkout }) => {
+const newWorkout = {title: "New Workout", notes: ""}
+
+const EditWorkout = ({ workouts, updateWorkout, createWorkout }) => {
   const { id } = useParams()
-  const [workout] = useState(workouts.find((w) => w._id === id))
+  const navigate = useNavigate()
+  const [workout] = useState(workouts ? workouts.find((w) => w._id === id) : newWorkout)
   const [title, setTitle] = useState(workout ? workout.title : "")
 
   const handleSubmit = useCallback((e) => {
+    updateWorkout
+    ?
     updateWorkout(id, {title: title})
+    :
+    createWorkout(title)
     e.preventDefault()
+    navigate('/')
   })
 
   return (
@@ -25,6 +33,9 @@ const EditWorkout = ({ workouts, updateWorkout }) => {
         </input>
         <input type="submit" value="save"></input>
       </form>
+      <button onClick={() => navigate('/')}>
+        Cancel
+      </button>
     </main>
   )
 }
