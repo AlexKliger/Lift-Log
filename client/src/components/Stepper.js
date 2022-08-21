@@ -2,7 +2,6 @@ import { useCallback } from 'react'
 
 const Stepper = ({onChange, value, stepSize}) => {
   const handleChange = useCallback((e) => {
-    console.log("Stepper -> handleChange(e:", e, ")")
     onChange(e.target.value)
   })
 
@@ -16,12 +15,12 @@ const Stepper = ({onChange, value, stepSize}) => {
         onChange={handleChange}>
       </input>
       <i
-        className="fa fa-angle-up color-font--secondary font-size--header"
+        className="fa fa-angle-up color-font--primary font-size--header"
         onClick={() => onChange(value + stepSize)}
       >
       </i>
       <i
-        className="fa fa-angle-down color-font--secondary font-size--header"
+        className="fa fa-angle-down color-font--primary font-size--header"
         onClick={() => onChange(value - stepSize)}
       >
       </i>

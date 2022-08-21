@@ -1,6 +1,6 @@
-const Checkbox = ({handleChange, checked, label}) => {
+const Checkbox = ({handleChange, checked, label, styling}) => {
   return (
-    <label>
+    <label className="font-size--large">
       {label || ""}
       <input
         onChange={handleChange}

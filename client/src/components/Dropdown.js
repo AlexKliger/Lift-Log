@@ -10,7 +10,7 @@ const Dropdown = ({ visible, user, logout, theme, setTheme }) => {
         label="Dark mode"
       />
       <nav>
-        <ul>
+        <ul className="font-size--large">
           <li>Settings</li>
           <li onClick={logout}><a>Logout</a></li>
         </ul>

@@ -3,7 +3,6 @@ import AddSet from './AddSet'
 
 const Lift = ({lift, updateLift, deleteLift}) => {
     const addSet = useCallback((weight, reps) => {
-        console.log(`Lift -> addSet(weight: ${weight}, reps: ${reps})`)
         updateLift(lift._id, {sets: [...lift.sets, `${weight}x${reps}`]})
     }, [lift])
 
@@ -14,14 +13,14 @@ const Lift = ({lift, updateLift, deleteLift}) => {
     return (
       <li className="lift">
         <div className="lift__header">
-          <i className="fa fa-trash" onClick={() => deleteLift(lift._id)}></i>
+          <i className="fa fa-trash font-size--large" onClick={() => deleteLift(lift._id)}></i>
           <h3 className="lift__name font-size--large">{lift.name}</h3>
         </div>
         <div className="lift__sets">
         {lift.sets.map((set, key) => (
           <span key={key}>{set}</span>
         ))}
-          {lift.sets.length > 0 && <span><i onClick={deleteSet} className="fa fa-minus color-font--secondary"></i></span>}
+          {lift.sets.length > 0 && <span><i onClick={deleteSet} className="fa fa-minus color-font--primary"></i></span>}
         </div>
 
         <AddSet handleSubmit={addSet} />

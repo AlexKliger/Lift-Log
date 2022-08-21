@@ -12,15 +12,16 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
     updateWorkout(workout._id, {lifts: [...workout.lifts.filter(lift => lift._id !== liftId)]})
   }, [workout])
 
-
   return (
     <section className="workout">
       <div className="workout__header">
         <h2 className="workout__title font-size--large">{workout.title}</h2>
-        <i className="fa fa-trash" onClick={() => deleteWorkout(workout._id)}></i>
-        <Link to={`edit/${workout._id}`}>
-          <i className="fa fa-pencil"></i>
-        </Link>
+        <nav className="workout__nav">
+          <i className="fa fa-trash font-size--large" onClick={() => deleteWorkout(workout._id)}></i>
+          <Link to={`edit/${workout._id}`}>
+            <i className="fa fa-pencil color-font--primary font-size--large"></i>
+          </Link>
+        </nav>
       </div>
       <ul>
       {workout.lifts.map((lift, key) => (

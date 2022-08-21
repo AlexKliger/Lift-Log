@@ -23,7 +23,7 @@ const AddItem = ({handleSubmit, styling, placeholder}) => {
       </input>
 
       <button className="btn-add" type="submit">
-        <i className="fa fa-plus color-font--secondary font-size--large"></i>
+        <i className="fa fa-plus color-font--primary font-size--large"></i>
       </button>
     </form>
   )
