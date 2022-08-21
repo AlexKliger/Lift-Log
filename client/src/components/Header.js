@@ -1,5 +1,6 @@
-import Dropdown from './Dropdown.js'
 import { Link } from 'react-router-dom'
+import Checkbox from './Checkbox'
+import Dropdown from './Dropdown.js'
 
 const Header = ({ user, logout, dropdownVisible, setDropdownVisible, theme, setTheme }) => {
   return (
@@ -9,11 +10,22 @@ const Header = ({ user, logout, dropdownVisible, setDropdownVisible, theme, setT
 
       <Dropdown
         visible={dropdownVisible}
-        user={user}
-        logout={logout}
-        theme={theme}
         setTheme={setTheme}
-      />
+      >
+        <h3 className="font-size--large">Hi, {user ? user.username : 'none'}!</h3>
+        <Checkbox
+          handleChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+          checked={theme === 'dark' ? true : false}
+          label="Dark mode"
+        />
+        <nav>
+          <ul className="font-size--large">
+            <li>Settings</li>
+            <li onClick={logout}><a>Logout</a></li>
+          </ul>
+        </nav>
+      </Dropdown>
+
       <nav>
         <Link to="/edit/new">
           <i className="fa fa-plus color-font--primary font-size--large"></i>
