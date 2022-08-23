@@ -69,13 +69,14 @@ function App() {
   useEffect(() => {
     // Clicking anywhere in the app hides the dropdown window.
     function onClick() {
+      console.log('App -> onClick')
       setDropdown({...dropdown, visible: false, content: <></>})
     }
     const app = document.querySelector('.app')
     app.addEventListener('click', onClick)
     // Clean up
     return () => app.removeEventListener('click', onClick)
-  })
+  }, [])
   
   return (
     <div className="app color-bg--primary color-font--primary" data-theme={theme}>
@@ -98,6 +99,8 @@ function App() {
                       deleteWorkout={deleteWorkout}
                       updateWorkout={updateWorkout}
                       updateLift={updateLift}
+                      dropdown={dropdown}
+                      setDropdown={setDropdown}
                   />}
         >
         </Route>

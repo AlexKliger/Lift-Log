@@ -1,6 +1,7 @@
+import { set } from 'mongoose'
 import Workout from './Workout'
 
-const Log = ({workouts, deleteWorkout, updateWorkout, updateLift}) => {
+const Log = ({workouts, deleteWorkout, updateWorkout, updateLift, dropdown, setDropdown}) => {
 
   return(
     <main className="l-centered">
@@ -14,6 +15,8 @@ const Log = ({workouts, deleteWorkout, updateWorkout, updateLift}) => {
           deleteWorkout={deleteWorkout}
           updateWorkout={updateWorkout}
           updateLift={updateLift}
+          dropdown={dropdown}
+          setDropdown={setDropdown}
           key={key}
         />
       ))}

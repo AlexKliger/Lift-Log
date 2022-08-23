@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 import Lift from './Lift'
 import AddItem from './AddItem'
 
-const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
+const DropdownContent = () => (
+  <h1>Content from Workout</h1>
+)
+
+const Workout = ({workout, deleteWorkout, updateWorkout, updateLift, dropdown, setDropdown}) => {
   const addLift = useCallback((name) => {
     updateWorkout(workout._id, {lifts: [...workout.lifts, {name: name, sets: []}]})
   }, [workout])
@@ -17,6 +21,7 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift}) => {
       <div className="workout__header">
         <h2 className="workout__title font-size--large">{workout.title}</h2>
         <nav className="workout__nav">
+          {workout.notes.length > 0 && <i onClick={() => setDropdown({...dropdown, visible: true, content: <DropdownContent />})} className="fa fa-sticky-note-o font-size--large"></i>}
           <i className="fa fa-trash font-size--large" onClick={() => deleteWorkout(workout._id)}></i>
           <Link to={`edit/${workout._id}`}>
             <i className="fa fa-pencil color-font--primary font-size--large"></i>
