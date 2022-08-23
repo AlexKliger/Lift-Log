@@ -1,13 +1,22 @@
 import { Link } from 'react-router-dom'
+import Checkbox from './Checkbox'
 
-const DropdownContent = () => (
+const DropdownContent = ({user, logout, theme, setTheme}) => (
   <nav>
-    <h1>This is dropdown content.</h1>
+    <h3 className="font-size--large">Hi, {user ? user.username : 'none'}!</h3>
+    <Checkbox
+      handleChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+      checked={theme === 'dark' ? true : false}
+      label="Dark mode"
+    />
+    <ul className="font-size--large">
+      <li>Settings</li>
+      <li onClick={logout}><a>Logout</a></li>
+    </ul>
   </nav>
 )
 
 const Header = ({ user, logout, dropdown, setDropdown, theme, setTheme }) => {
-
   return (
     <>
     <header className="header color-bg--secondary">
@@ -17,7 +26,7 @@ const Header = ({ user, logout, dropdown, setDropdown, theme, setTheme }) => {
         <Link to="/edit/new">
           <i className="fa fa-plus color-font--primary font-size--large"></i>
         </Link>
-        <i onClick={() => setDropdown({...dropdown, visible: !dropdown.visible, content: <DropdownContent />})} className="dropdown-toggle fa fa-ellipsis-v font-size--large"></i>
+        <i onClick={() => setDropdown({...dropdown, visible: !dropdown.visible, content: <DropdownContent user={user} logout={logout} theme={theme} setTheme={setTheme} />})} className="dropdown-toggle fa fa-ellipsis-v font-size--large"></i>
       </nav>
     </header>
 
@@ -27,7 +36,5 @@ const Header = ({ user, logout, dropdown, setDropdown, theme, setTheme }) => {
     </>
   )
 }
-
-
 
 export default Header

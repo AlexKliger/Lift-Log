@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import Lift from './Lift'
 import AddItem from './AddItem'
 
-const DropdownContent = () => (
-  <h1>Content from Workout</h1>
+const DropdownContent = ({notes}) => (
+  <p>{notes}</p>
 )
 
 const Workout = ({workout, deleteWorkout, updateWorkout, updateLift, dropdown, setDropdown}) => {
@@ -18,7 +18,7 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift, dropdown, s
 
   const handleClickOnNote = (e) => {
     const position = {right: e.target.offsetWidth, top: e.target.offsetTop}
-    setDropdown({...dropdown, visible: true, content: <DropdownContent />, position: position})
+    setDropdown({...dropdown, visible: true, content: <DropdownContent notes={workout.notes} />, position: position})
   }
 
   return (
