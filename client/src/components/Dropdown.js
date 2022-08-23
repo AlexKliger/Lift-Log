@@ -1,6 +1,6 @@
-const Dropdown = ({ visible, children }) => {
+const Dropdown = ({ visible, children, position }) => {
   return (
-    <div className={`dropdown color-bg--primary box-shadow ${visible ? "": "dropdown--hidden"}`}>
+    <div style={position} className={`dropdown color-bg--primary box-shadow ${visible ? "": "dropdown--hidden"}`}>
       {children}
     </div>
   )
