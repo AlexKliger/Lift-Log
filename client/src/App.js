@@ -16,7 +16,7 @@ import './css/modules.css'
 function App() {
   const [user, setUser] = useState()
   const [workouts, setWorkouts] = useState([])
-  const [dropdown, setDropdown] = useState({visible: false, content: null})
+  const [dropdown, setDropdown] = useState({visible: false, content: null, position: {right: 0, top: 0}})
   const [theme, setTheme] = useLocalStorage('theme', 'light')
 
   const createWorkout = useCallback(async (body) => {
@@ -70,17 +70,17 @@ function App() {
     // Clicking anywhere in the app hides the dropdown window.
     function onClick() {
       console.log('App -> onClick')
-      setDropdown({...dropdown, visible: false, content: <></>})
+      setDropdown({...dropdown, visible: false})
     }
     const app = document.querySelector('.app')
     app.addEventListener('click', onClick)
     // Clean up
     return () => app.removeEventListener('click', onClick)
-  }, [])
+  })
   
   return (
     <div className="app color-bg--primary color-font--primary" data-theme={theme}>
-      <Dropdown visible={dropdown.visible}>
+      <Dropdown visible={dropdown.visible} position={dropdown.position}>
         {dropdown.content}
       </Dropdown>
       <Header
