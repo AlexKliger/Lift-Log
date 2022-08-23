@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import useLocalStorage from './hooks/useLocalStorage'
 /* Component imports */
+import Dropdown from './components/Dropdown'
 import EditWorkout from './components/EditWorkout'
 import Header from './components/Header'
 import Log from './components/Log'
@@ -15,7 +16,7 @@ import './css/modules.css'
 function App() {
   const [user, setUser] = useState()
   const [workouts, setWorkouts] = useState([])
-  const [dropdownVisible, setDropdownVisible] = useState(false)
+  const [dropdown, setDropdown] = useState({visible: false, content: null})
   const [theme, setTheme] = useLocalStorage('theme', 'light')
 
   const createWorkout = useCallback(async (body) => {
@@ -66,23 +67,26 @@ function App() {
 }, [])
 
   useEffect(() => {
-    // Clicking anywhere should hide the dropdown window if it is open.
+    // Clicking anywhere in the app hides the dropdown window.
     function onClick() {
-      setDropdownVisible(false)
+      setDropdown({...dropdown, visible: false, content: <></>})
     }
     const app = document.querySelector('.app')
     app.addEventListener('click', onClick)
     // Clean up
     return () => app.removeEventListener('click', onClick)
   })
-
+  
   return (
     <div className="app color-bg--primary color-font--primary" data-theme={theme}>
+      <Dropdown visible={dropdown.visible}>
+        {dropdown.content}
+      </Dropdown>
       <Header
         user={user}
         logout={logout}
-        dropdownVisible={dropdownVisible}
-        setDropdownVisible={setDropdownVisible}
+        dropdown={dropdown}
+        setDropdown={setDropdown}
         theme={theme}
         setTheme={setTheme}
       />
