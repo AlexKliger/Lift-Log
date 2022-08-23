@@ -16,12 +16,17 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift, dropdown, s
     updateWorkout(workout._id, {lifts: [...workout.lifts.filter(lift => lift._id !== liftId)]})
   }, [workout])
 
+  const handleClickOnNote = (e) => {
+    const position = {right: e.target.offsetWidth, top: e.target.offsetTop}
+    setDropdown({...dropdown, visible: true, content: <DropdownContent />, position: position})
+  }
+
   return (
     <section className="workout">
       <div className="workout__header">
         <h2 className="workout__title font-size--large">{workout.title}</h2>
         <nav className="workout__nav">
-          {workout.notes.length > 0 && <i onClick={() => setDropdown({...dropdown, visible: true, content: <DropdownContent />})} className="fa fa-sticky-note-o font-size--large"></i>}
+          {workout.notes.length > 0 && <i onClick={handleClickOnNote} className="fa fa-sticky-note-o font-size--large"></i>}
           <i className="fa fa-trash font-size--large" onClick={() => deleteWorkout(workout._id)}></i>
           <Link to={`edit/${workout._id}`}>
             <i className="fa fa-pencil color-font--primary font-size--large"></i>
