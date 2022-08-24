@@ -7,7 +7,8 @@ import EditWorkout from './components/EditWorkout'
 import Header from './components/Header'
 import Log from './components/Log'
 import Login from './components/Login'
-import { GET, POST, DELETE, PUT } from './util/fetch'
+import { GET, POST, DELETE } from './util/fetch'
+import { getWorkouts } from './util/api'
 /* CSS imports */
 import './css/App.css'
 import './css/themes.css'
@@ -18,25 +19,6 @@ function App() {
   const [workouts, setWorkouts] = useState([])
   const [dropdown, setDropdown] = useState({visible: false, content: null, position: {right: 0, top: 0}})
   const [theme, setTheme] = useLocalStorage('theme', 'light')
-
-  const createWorkout = useCallback(async (body) => {
-    const config = {body: JSON.stringify(body)}
-    setWorkouts(await POST(`/workouts`, config))
-  }, [])
-
-  const deleteWorkout = useCallback(async (workoutId) => {
-    setWorkouts(await DELETE(`/workouts/${workoutId}`))
-  }, [])
-
-  const updateWorkout = useCallback(async (workoutId, body) => {
-    const config = {body: JSON.stringify(body)}
-    setWorkouts(await PUT(`/workouts/${workoutId}`, config))
-  }, [])
-
-  const updateLift = useCallback(async (liftId, body) => {
-    const config = {body: JSON.stringify(body)}
-    setWorkouts(await PUT(`/workouts/updateLift/${liftId}`, config))
-  }, [])
 
   const login = useCallback(async (username, password) => {
     const config = {body: JSON.stringify({username: username, password: password})}
@@ -59,17 +41,12 @@ function App() {
   }, [])
 
   useEffect(() => {
-    async function getWorkouts() {
-        setWorkouts(await GET('/workouts'))
-    }
-
-    getWorkouts()
-}, [])
+    getWorkouts(setWorkouts)
+  }, [])
 
   useEffect(() => {
     // Clicking anywhere in the app hides the dropdown window.
     function onClick() {
-      console.log('App -> onClick')
       setDropdown({...dropdown, visible: false})
     }
     const app = document.querySelector('.app')
@@ -96,9 +73,7 @@ function App() {
           path="/"
           element={<Log
                       workouts={workouts}
-                      deleteWorkout={deleteWorkout}
-                      updateWorkout={updateWorkout}
-                      updateLift={updateLift}
+                      setWorkouts={setWorkouts}
                       dropdown={dropdown}
                       setDropdown={setDropdown}
                   />}
@@ -109,14 +84,14 @@ function App() {
             path=":id"
             element={<EditWorkout
                         workouts={workouts}
-                        updateWorkout={updateWorkout}
+                        setWorkouts={setWorkouts}
                     />}
           ></Route>
 
           <Route
             path="new"
             element={<EditWorkout
-                      createWorkout={createWorkout}
+                      setWorkouts={setWorkouts}
                     />}
           ></Route>
         </Route>
