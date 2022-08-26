@@ -1,6 +1,8 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Checkbox from './Checkbox'
 import { logout } from '../util/api'
+import { ThemeContext } from '../context/ThemeContext'
 
 async function handleLogoutClick(setWorkouts, setUser) {
   setWorkouts(await logout)
@@ -22,7 +24,8 @@ const DropdownContent = ({user, theme, setTheme, setWorkouts, setUser}) => (
   </nav>
 )
 
-const Header = ({ user, dropdown, setWorkouts, setUser, setDropdown, theme, setTheme }) => {
+const Header = ({ user, dropdown, setWorkouts, setUser, setDropdown }) => {
+  const {theme, setTheme} = useContext(ThemeContext)
   return (
     <>
     <header className="header color-bg--secondary">

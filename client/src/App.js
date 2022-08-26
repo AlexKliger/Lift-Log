@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import useLocalStorage from './hooks/useLocalStorage'
+import { ThemeContext } from './context/ThemeContext'
 /* Component imports */
 import Dropdown from './components/Dropdown'
 import EditWorkout from './components/EditWorkout'
@@ -17,7 +17,7 @@ function App() {
   const [user, setUser] = useState()
   const [workouts, setWorkouts] = useState([])
   const [dropdown, setDropdown] = useState({visible: false, content: null, position: {right: 0, top: 0}})
-  const [theme, setTheme] = useLocalStorage('theme', 'light')
+  const {theme} = useContext(ThemeContext)
 
   useEffect(() => {
     async function componentDidMount() {
@@ -50,8 +50,6 @@ function App() {
         setDropdown={setDropdown}
         setWorkouts={setWorkouts}
         setUser={setUser}
-        theme={theme}
-        setTheme={setTheme}
       />
       <Routes>
         <Route
