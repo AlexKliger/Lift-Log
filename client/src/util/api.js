@@ -23,3 +23,16 @@ export const updateLift = async (liftId, body) => {
     const config = {body: JSON.stringify(body)}
     return await PUT(`/workouts/updateLift/${liftId}`, config)
 }
+
+export const login = async (username, password) => {
+    const config = {body: JSON.stringify({username: username, password: password})}
+    return await POST('auth/login', config)
+}
+
+export const logout = async () => {
+    return await DELETE('auth/logout')
+}
+
+export const getUser = async () => {
+    return await GET('auth/user')
+}

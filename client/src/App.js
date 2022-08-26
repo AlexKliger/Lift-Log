@@ -7,8 +7,8 @@ import EditWorkout from './components/EditWorkout'
 import Header from './components/Header'
 import Log from './components/Log'
 import Login from './components/Login'
-import { GET, POST, DELETE } from './util/fetch'
-import { getWorkouts } from './util/api'
+import { GET } from './util/fetch'
+import { getWorkouts, getUser } from './util/api'
 /* CSS imports */
 import './css/App.css'
 import './css/themes.css'
@@ -20,28 +20,13 @@ function App() {
   const [dropdown, setDropdown] = useState({visible: false, content: null, position: {right: 0, top: 0}})
   const [theme, setTheme] = useLocalStorage('theme', 'light')
 
-  const login = useCallback(async (username, password) => {
-    const config = {body: JSON.stringify({username: username, password: password})}
-    setUser(username)
-    setWorkouts(await POST('auth/login', config))
-  })
-  
-  const logout = useCallback(async () => {
-    DELETE('auth/login')
-    setUser('')
-    setWorkouts([])
-  })
-
   useEffect(() => {
-    async function getUser() {
-      setUser(await GET('auth/user'))
+    async function componentDidMount() {
+      setWorkouts(await getWorkouts())
+      setUser(await getUser(await GET('auth/user')))
     }
 
-    getUser()
-  }, [])
-
-  useEffect(() => {
-    getWorkouts(setWorkouts)
+    componentDidMount()
   }, [])
 
   useEffect(() => {
@@ -62,9 +47,10 @@ function App() {
       </Dropdown>
       <Header
         user={user}
-        logout={logout}
         dropdown={dropdown}
         setDropdown={setDropdown}
+        setWorkouts={setWorkouts}
+        setUser={setUser}
         theme={theme}
         setTheme={setTheme}
       />
@@ -97,7 +83,7 @@ function App() {
         </Route>
       </Routes>
 
-      {!user && <Login handleSubmit={login} />}
+      {!user && <Login setWorkouts={setWorkouts} setUser={setUser} />}
     </div>
   )
 }
