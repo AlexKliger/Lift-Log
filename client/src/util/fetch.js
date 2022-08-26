@@ -1,4 +1,4 @@
-const GET = async (url) => {
+export const GET = async (url) => {
     try {
         const res = await fetch(url, {
             method: 'GET',
@@ -12,7 +12,7 @@ const GET = async (url) => {
     }
 }
 
-const DELETE = async (url) => {
+export const DELETE = async (url) => {
     try {
         const res = await fetch(url, {
             method: 'DELETE',
@@ -26,7 +26,7 @@ const DELETE = async (url) => {
     }
 }
 
-const POST = async (url, config) => {
+export const POST = async (url, config) => {
     try {
         const res = await fetch(url, {
             method: 'POST',
@@ -41,7 +41,7 @@ const POST = async (url, config) => {
     }
 }
 
-const PUT = async (url, config) => {
+export const PUT = async (url, config) => {
     try {
         const res = await fetch(url, {
             method: 'PUT',
@@ -55,5 +55,3 @@ const PUT = async (url, config) => {
 
     }
 }
-
-module.exports = { GET, DELETE, POST, PUT }

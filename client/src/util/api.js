@@ -1,4 +1,4 @@
-import { GET, POST, PUT, DELETE } from './fetch'
+import { GET, DELETE, POST, PUT } from './fetch'
 
 export const getWorkouts = async () => {
     return await GET('/workouts')
