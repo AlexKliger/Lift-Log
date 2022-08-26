@@ -1,24 +1,25 @@
 import { GET, POST, PUT, DELETE } from './fetch'
 
-export const getWorkouts = async (callback) => {
-    callback(await GET('/workouts'))
+export const getWorkouts = async () => {
+    return await GET('/workouts')
+    
 }
 
-export const createWorkout = async (body, callback) => {
+export const createWorkout = async (body) => {
     const config = {body: JSON.stringify(body)}
-    callback(await POST('/workouts', config))
+    return await POST('/workouts', config)
 }
 
-export const updateWorkout = async (workoutId, body, callback) => {
+export const updateWorkout = async (workoutId, body) => {
     const config = {body: JSON.stringify(body)}
-    callback(await PUT(`/workouts/${workoutId}`, config))
+    return await PUT(`/workouts/${workoutId}`, config)
 }
 
-export const deleteWorkout = async (workoutId, callback) => {
-    callback(await DELETE(`/workouts/${workoutId}`))
+export const deleteWorkout = async (workoutId) => {
+    return await DELETE(`/workouts/${workoutId}`)
 }
 
-export const updateLift = async (liftId, body, callback) => {
+export const updateLift = async (liftId, body) => {
     const config = {body: JSON.stringify(body)}
-    callback(await PUT(`/workouts/updateLift/${liftId}`, config))
+    return await PUT(`/workouts/updateLift/${liftId}`, config)
 }
