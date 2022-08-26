@@ -1,7 +1,6 @@
-import { set } from 'mongoose'
 import Workout from './Workout'
 
-const Log = ({workouts, deleteWorkout, updateWorkout, updateLift, dropdown, setDropdown}) => {
+const Log = ({workouts, setWorkouts, dropdown, setDropdown}) => {
 
   return(
     <main className="l-centered">
@@ -9,12 +8,10 @@ const Log = ({workouts, deleteWorkout, updateWorkout, updateLift, dropdown, setD
       ?
       'Loading...'
       :
-      workouts.map((workout, key) => (
+      !workouts.map ? null : workouts.map((workout, key) => (
         <Workout
           workout={workout}
-          deleteWorkout={deleteWorkout}
-          updateWorkout={updateWorkout}
-          updateLift={updateLift}
+          setWorkouts={setWorkouts}
           dropdown={dropdown}
           setDropdown={setDropdown}
           key={key}

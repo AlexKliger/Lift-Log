@@ -1,17 +1,19 @@
 import { useState } from 'react'
+import { getUser, login } from '../util/api'
 
-const Login = ({ handleSubmit }) => {
-    const [username, setUser] = useState('')
-    const [password, setPass] = useState('')
+const Login = ({ setWorkouts, setUser, user }) => {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
     function handleChange(e) {
-      if (e.target.id === 'username') setUser(e.target.value)
-      if (e.target.id === 'password') setPass(e.target.value)
+      if (e.target.id === 'username') setUsername(e.target.value)
+      if (e.target.id === 'password') setPassword(e.target.value)
     }
 
-    function onSubmit(e) {
-      handleSubmit(username, password)
+    async function onSubmit(e) {
       e.preventDefault()
+      setWorkouts(await login(username, password))
+      setUser(await getUser())
     }
 
     return (

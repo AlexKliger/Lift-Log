@@ -2,18 +2,21 @@ import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import Lift from './Lift'
 import AddItem from './AddItem'
+import { deleteWorkout, updateWorkout } from '../util/api'
 
 const DropdownContent = ({notes}) => (
   <p>{notes}</p>
 )
 
-const Workout = ({workout, deleteWorkout, updateWorkout, updateLift, dropdown, setDropdown}) => {
-  const addLift = useCallback((name) => {
-    updateWorkout(workout._id, {lifts: [...workout.lifts, {name: name, sets: []}]})
+const Workout = ({workout, setWorkouts, dropdown, setDropdown}) => {
+  const addLift = useCallback(async (name) => {
+    const body = {lifts: [...workout.lifts, {name: name, sets: []}]}
+    setWorkouts(await updateWorkout(workout._id, body))
   }, [workout])
 
-  const deleteLift = useCallback((liftId) => {
-    updateWorkout(workout._id, {lifts: [...workout.lifts.filter(lift => lift._id !== liftId)]})
+  const deleteLift = useCallback(async (liftId) => {
+    const body = {lifts: [...workout.lifts.filter(lift => lift._id !== liftId)]}
+    setWorkouts(await updateWorkout(workout._id, body))
   }, [workout])
 
   const handleClickOnNote = (e) => {
@@ -27,7 +30,7 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift, dropdown, s
         <h2 className="workout__title font-size--large">{workout.title}</h2>
         <nav className="workout__nav">
           {workout.notes.length > 0 && <i onClick={handleClickOnNote} className="fa fa-sticky-note-o font-size--large"></i>}
-          <i className="fa fa-trash font-size--large" onClick={() => deleteWorkout(workout._id)}></i>
+          <i className="fa fa-trash font-size--large" onClick={async () => setWorkouts(await deleteWorkout(workout._id))}></i>
           <Link to={`edit/${workout._id}`}>
             <i className="fa fa-pencil color-font--primary font-size--large"></i>
           </Link>
@@ -35,7 +38,7 @@ const Workout = ({workout, deleteWorkout, updateWorkout, updateLift, dropdown, s
       </div>
       <ul>
       {workout.lifts.map((lift, key) => (
-        <Lift lift={lift} deleteLift={deleteLift} updateLift={updateLift} key={key} />
+        <Lift lift={lift} deleteLift={deleteLift} setWorkouts={setWorkouts} key={key} />
       ))}
         <li>
           <AddItem

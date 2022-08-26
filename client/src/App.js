@@ -7,7 +7,6 @@ import EditWorkout from './components/EditWorkout'
 import Header from './components/Header'
 import Log from './components/Log'
 import Login from './components/Login'
-import { GET } from './util/fetch'
 import { getWorkouts, getUser } from './util/api'
 /* CSS imports */
 import './css/App.css'
@@ -23,7 +22,7 @@ function App() {
   useEffect(() => {
     async function componentDidMount() {
       setWorkouts(await getWorkouts())
-      setUser(await getUser(await GET('auth/user')))
+      setUser(await getUser())
     }
 
     componentDidMount()

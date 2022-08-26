@@ -1,10 +1,11 @@
 import { useCallback, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Stepper from "../components/Stepper"
+import { createWorkout, updateWorkout } from '../util/api'
 
 const newWorkout = {title: "New Workout", notes: ""}
 
-const EditWorkout = ({ workouts, updateWorkout, createWorkout }) => {
+const EditWorkout = ({ workouts, setWorkouts }) => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [workout] = useState(workouts ? workouts.find((w) => w._id === id) : newWorkout)
@@ -12,14 +13,15 @@ const EditWorkout = ({ workouts, updateWorkout, createWorkout }) => {
   const [weight, setWeight] = useState(workout ? workout.weight : 0)
   const [notes, setNotes] = useState(workout ? workout.notes : "")
   const [date, setDate] = useState(workout.date ? workout.date.substring(0, 10) : Date.now)
-  console.log('EditWorkout -> date:', date)
-  const handleSubmit = useCallback((e) => {
-    updateWorkout
-    ?
-    updateWorkout(id, {title: title, weight: weight, notes: notes, date: date})
-    :
-    createWorkout({title: title, weight: weight, notes: notes, date: date})
+
+  const handleSubmit = useCallback(async (e) => {
+    const body = {title: title, weight: weight, notes: notes, date: date}
     e.preventDefault()
+    workouts
+    ?
+    setWorkouts(await updateWorkout(id, body))
+    :
+    setWorkouts(await createWorkout(body))
     navigate('/')
   })
 
