@@ -21,13 +21,13 @@
 .dropdown {
     padding: 1.5rem 2rem;
     position: fixed;
-    right: 0;
-    top: 0;
-    transition: 1s;
+    z-index: 1000;
+    border: 1px solid white;
+    border-radius: 0.8rem;
 }
 
 .dropdown--hidden {
-    transform: translate(100%, -100%)
+    display: none;
 }
 
 .dropdown-toggle {

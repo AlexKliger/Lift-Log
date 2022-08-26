@@ -12,4 +12,5 @@
 
 .app {
     overflow: auto; /* Needed to fix react bug where root element does not extend to 100vh */
+    height: 100vh;
 }
