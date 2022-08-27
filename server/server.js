@@ -21,11 +21,13 @@ app.use(express.static(path.join(__dirname, '../client/build')))
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 // Sessions
+app.enable('trust proxy')
 app.use(
     session({
         secret: 'charlie browneyes',
         resave: false,
         saveUninitialized: false,
+        proxy: true,
         store: new MongoStore({ mongooseConnection: mongoose.connection})
     })
 )
@@ -36,7 +38,7 @@ app.use(passport.session())
 app.use('/workouts', workoutsRoutes)
 app.use('/auth', authRoutes)
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     try {
         res.sendFile(__dirname + '/../client/build/index.html')
     } catch (err) {
