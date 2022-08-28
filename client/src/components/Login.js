@@ -4,6 +4,7 @@ import { getUser, login } from '../util/api'
 const Login = ({ setWorkouts, setUser, user }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [displayMessage, setDisplayMessage] = useState('')
 
   const handleChange = useCallback((e) => {
     if (e.target.id === 'username') setUsername(e.target.value)
@@ -12,12 +13,15 @@ const Login = ({ setWorkouts, setUser, user }) => {
 
   const onSubmit = useCallback(async (e) => {
     e.preventDefault()
-    setWorkouts(await login(username, password))
+    const data = await login(username, password)
+    data.message && setDisplayMessage(data.message)
+    setWorkouts(data)
     setUser(await getUser())
   })
 
   return (
       <form onSubmit={onSubmit}>
+        <span>{displayMessage}</span>
         <div>
           <label htmlFor="username">Username</label>
           <input
