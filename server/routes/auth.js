@@ -1,16 +1,13 @@
 const express = require('express')
 const passport = require('passport')
-const crypto = require('crypto');
+const crypto = require('crypto')
 const User = require('../models/User')
 const router = express.Router()
 
 router.post('/login', passport.authenticate('local', {
-  failureRedirect: '/auth/login/fail',
-  failureMessage: true
-}),
-  async function(req, res) {
-    res.redirect('/workouts')
-  }
+  successRedirect: '/workouts',
+  failureRedirect: '/auth/login/fail'
+  })
 )
 
 router.post('/register', async (req, res) => {
@@ -33,9 +30,9 @@ router.post('/register', async (req, res) => {
 })
 
 router.get('/login/fail', async (req, res) => {
-  console.log('login requested')
+  console.log('login request')
   try {
-      res.json({message: 'login failed'})
+      res.status(401).send({message: "Incorrect username or password."})
   } catch (err) {
       console.log(err)
   }
