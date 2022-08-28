@@ -5,9 +5,13 @@
 
 .add-set {
     display: flex;
-    gap: 1.5rem;
-    align-items: center;
+    gap: 2rem;
 }
+
+    .add-set__steppers {
+        display: flex;
+        gap: 1.5rem;
+    }
 
 .add-workout {
     margin-bottom: 2rem;
@@ -72,12 +76,13 @@ input[type=number] {
 
 .stepper {
     display: flex;
+    gap: 0.25rem;
     align-items: center;
 }
 
     .stepper__input {
         width: 20px;
-        text-align: right;
+        text-align: left;
     }
 
 .workout {

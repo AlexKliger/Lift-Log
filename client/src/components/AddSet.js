@@ -16,6 +16,7 @@ const AddSet = ({ handleSubmit }) => {
         <i className="fa fa-plus color-font--primary font-size--large"></i>
       </button>
 
+      <div className="add-set__steppers">
       <Stepper
         value={weight}
         onChange={setWeight}
@@ -27,6 +28,8 @@ const AddSet = ({ handleSubmit }) => {
         onChange={setReps}
         stepSize={1}
       />
+      </div>
+
   
     </form>
   )
