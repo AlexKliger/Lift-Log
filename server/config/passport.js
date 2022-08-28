@@ -13,10 +13,11 @@ module.exports = function (passport) {
             let user = await User.findOne({ username: username })
             if (!user) {
               // User not found. Create new user.
-              const salt = crypto.randomBytes(16).toString('hex')
-              let hash = crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512').toString('hex')
-              user = await User.create({ username: username, hash: hash, salt: salt})
-              return done(null, user)
+              // const salt = crypto.randomBytes(16).toString('hex')
+              // let hash = crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512').toString('hex')
+              // user = await User.create({ username: username, hash: hash, salt: salt})
+              // return done(null, user)
+              return done(null, false)
             }
             // User found.
             let hash = crypto.pbkdf2Sync(password, user.salt, 10000, 512, 'sha512').toString('hex')

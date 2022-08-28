@@ -1,9 +1,11 @@
 const express = require('express')
-const router = express.Router()
 const passport = require('passport')
+const crypto = require('crypto');
+const User = require('../models/User')
+const router = express.Router()
 
 router.post('/login', passport.authenticate('local', {
-  failureRedirect: '/auth/fail/login',
+  failureRedirect: '/auth/login/fail',
   failureMessage: true
 }),
   async function(req, res) {
@@ -11,7 +13,26 @@ router.post('/login', passport.authenticate('local', {
   }
 )
 
-router.get('/fail/login', async (req, res) => {
+router.post('/register', async (req, res) => {
+  console.log('register requested')
+  try {
+    const username = req.body.username
+    const password = req.body.password
+    let user = await User.findOne({username: username})
+    if (user) {
+      res.json({message: 'username already exists'})
+    } else {
+      const salt = crypto.randomBytes(16).toString('hex')
+      let hash = crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512').toString('hex')
+      user = await User.create({username: username, hash: hash, salt: salt})
+      res.json({message: 'registration successful'})
+    }
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+router.get('/login/fail', async (req, res) => {
   console.log('login requested')
   try {
       res.json({message: 'login failed'})
