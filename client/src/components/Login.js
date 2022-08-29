@@ -1,35 +1,34 @@
-import { useCallback, useState } from 'react'
-import { getUser, login } from '../util/api'
+import { useCallback, useState } from "react"
+import { getUser, login } from "../util/api"
 
-const Login = ({ setWorkouts, setUser, user }) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [displayMessage, setDisplayMessage] = useState('')
+const Login = ({ setWorkouts, setUser }) => {
+  const [credentials, setCredentials] = useState({username: "", password: ""})
+  const [displayMessage, setDisplayMessage] = useState("")
 
   const handleChange = useCallback((e) => {
-    if (e.target.id === 'username') setUsername(e.target.value)
-    if (e.target.id === 'password') setPassword(e.target.value)
+    const newCreds = {...credentials}
+    newCreds[e.target.name] = e.target.value
+    setCredentials(newCreds)
   })
 
-  const onSubmit = useCallback(async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault()
-    const data = await login(username, password)
+    const data = await login(credentials.username, credentials.password)
     data.message && setDisplayMessage(data.message)
     setWorkouts(data)
     setUser(await getUser())
   })
 
   return (
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <span>{displayMessage}</span>
         <div>
           <label htmlFor="username">Username</label>
           <input
             onChange={handleChange}
-            id="username"
             name="username"
             type="text"
-            value={username}
+            value={credentials.username}
             autoComplete="username"
             required />
         </div>
@@ -37,10 +36,9 @@ const Login = ({ setWorkouts, setUser, user }) => {
           <label htmlFor="current-password">Password</label>
           <input
             onChange={handleChange}
-            id="password"
             name="password"
             type="password"
-            value={password}
+            value={credentials.password}
             autoComplete="current-password"
             required />
         </div>
