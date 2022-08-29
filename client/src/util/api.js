@@ -2,7 +2,6 @@ import { GET, DELETE, POST, PUT } from './fetch'
 
 export const getWorkouts = async () => {
     return await GET('/workouts')
-    
 }
 
 export const createWorkout = async (body) => {
@@ -22,6 +21,11 @@ export const deleteWorkout = async (workoutId) => {
 export const updateLift = async (liftId, body) => {
     const config = {body: JSON.stringify(body)}
     return await PUT(`/workouts/updateLift/${liftId}`, config)
+}
+
+export const register = async(username, password) => {
+    const config = {body: JSON.stringify({username: username, password: password})}
+    return await POST('auth/register', config)
 }
 
 export const login = async (username, password) => {
