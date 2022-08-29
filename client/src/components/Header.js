@@ -4,7 +4,7 @@ import { logout } from '../util/api'
 import { ThemeContext } from '../context/ThemeContext'
 import MainNav from './MainNav'
 
-const Header = ({ user, dropdown, setWorkouts, setUser, setDropdown }) => {
+const Header = ({setWorkouts, setUser, user, setDropdown, dropdown }) => {
   const {theme, setTheme} = useContext(ThemeContext)
 
   return (
@@ -14,7 +14,7 @@ const Header = ({ user, dropdown, setWorkouts, setUser, setDropdown }) => {
 
       <div>
         <Link to="/edit/new">
-          <i className="fa fa-plus color-font--primary font-size--large"></i>
+          {user && <i className="fa fa-plus color-font--primary font-size--large"></i>}
         </Link>
         <i onClick={() => setDropdown({...dropdown, visible: !dropdown.visible, content: <MainNav user={user} logout={logout} theme={theme} setTheme={setTheme} setWorkouts={setWorkouts} setUser={setUser} />})} className="dropdown-toggle fa fa-ellipsis-v font-size--large"></i>
       </div>
