@@ -1,7 +1,7 @@
 const express = require('express')
 const passport = require('passport')
-const crypto = require('crypto')
 const User = require('../models/User')
+const authController = require('../controllers/auth')
 const router = express.Router()
 
 router.post('/login', passport.authenticate('local', {
@@ -10,45 +10,12 @@ router.post('/login', passport.authenticate('local', {
   })
 )
 
-router.post('/register', async (req, res) => {
-  console.log('register requested')
-  try {
-    const username = req.body.username
-    const password = req.body.password
-    let user = await User.findOne({username: username})
-    if (user) {
-      res.json({message: 'username already exists'})
-    } else {
-      const salt = crypto.randomBytes(16).toString('hex')
-      let hash = crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512').toString('hex')
-      user = await User.create({username: username, hash: hash, salt: salt})
-      res.json({message: 'registration successful'})
-    }
-  } catch (err) {
-    console.log(err)
-  }
-})
+router.delete('/logout', authController.logout)
 
-router.get('/login/fail', async (req, res) => {
-  console.log('login request')
-  try {
-      res.status(401).send({message: "Incorrect username or password."})
-  } catch (err) {
-      console.log(err)
-  }
-})
+router.post('/register', authController.register)
 
-router.delete('/logout', async (req, res) => {
-  console.log('logout requested')
-  req.logout(function(err) {
-    if (err) { return next(err) }
-    res.redirect(303, '/workouts')
-  })
-})
+router.get('/user', authController.user)
 
-router.get('/user', async (req, res) => {
-  console.log('user requested:', req.user ? req.user.username : 'none')
-  res.send(req.user)
-})
+router.get('/login/fail', authController.loginFail)
 
 module.exports = router
