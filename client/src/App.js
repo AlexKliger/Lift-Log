@@ -1,3 +1,4 @@
+/* Package imports */
 import { useContext, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ThemeContext } from './context/ThemeContext'
@@ -7,6 +8,7 @@ import EditWorkout from './components/EditWorkout'
 import Header from './components/Header'
 import Log from './components/Log'
 import Login from './components/Login'
+import Registration from './components/Registration'
 import { getWorkouts, getUser } from './util/api'
 /* CSS imports */
 import './css/App.css'
@@ -80,7 +82,13 @@ function App() {
         </Route>
       </Routes>
 
-      {!user && <Login setWorkouts={setWorkouts} setUser={setUser} />}
+      {!user 
+        &&
+        <div>
+          <Login setWorkouts={setWorkouts} setUser={setUser} />
+          <Registration setWorkouts={setWorkouts} setUser={setUser} />
+        </div>
+      }
     </div>
   )
 }
