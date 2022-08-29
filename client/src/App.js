@@ -42,7 +42,7 @@ function App() {
   })
   
   return (
-    <div className="app color-bg--primary color-font--primary" data-theme={theme}>
+    <main className="app color-bg--primary color-font--primary" data-theme={theme}>
       <Dropdown visible={dropdown.visible} position={dropdown.position}>
         {dropdown.content}
       </Dropdown>
@@ -84,12 +84,12 @@ function App() {
 
       {!user 
         &&
-        <div>
-          <Login setWorkouts={setWorkouts} setUser={setUser} />
+        <div className="l-centered">
           <Registration setWorkouts={setWorkouts} setUser={setUser} />
+          <Login setWorkouts={setWorkouts} setUser={setUser} />
         </div>
       }
-    </div>
+    </main>
   )
 }
 

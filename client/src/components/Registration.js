@@ -32,42 +32,43 @@ const Registration = ({ setWorkouts, setUser }) => {
   }, [])
 
   return (
-    <form onSubmit={handleSubmit}>
-      <span onClick={handleGuestClick}>Continue as Guest</span>
+    <form className="form form--registration" onSubmit={handleSubmit}>
       <h2 className="font-size--large">Register</h2>
       <span>{displayMessage}</span>
 
       <div>
-        <label htmlFor="username">Username</label>
         <input
           type="text"
           value={credentials.username}
           name="username"
           onChange={handleChange}
         ></input>
+        <label htmlFor="username">Username</label>
       </div>
 
       <div>
-        <label htmlFor="password">Password</label>
         <input
           type="password"
           value={credentials.password}
           name="password"
           onChange={handleChange}
         ></input>
+        <label htmlFor="password">Password</label>
       </div>
 
       <div>
-        <label htmlFor="confirm">Confirm password</label>
         <input
           type="text"
           value={credentials.confirmation}
           name="confirmation"
           onChange={handleChange}
         ></input>
+        <label htmlFor="confirm">Confirm password</label>
       </div>
       
       <input type="submit" value="Register"></input>
+
+      <span onClick={handleGuestClick}>Continue as Guest</span>
     </form>
   )
 }

@@ -1,9 +1,8 @@
 import Workout from './Workout'
 
 const Log = ({workouts, setWorkouts, dropdown, setDropdown}) => {
-
   return(
-    <main className="l-centered">
+    <div className="l-centered">
       {!workouts
       ?
       'Loading...'
@@ -17,7 +16,7 @@ const Log = ({workouts, setWorkouts, dropdown, setDropdown}) => {
           key={key}
         />
       ))}
-    </main>
+    </div>
   )
 }
 
