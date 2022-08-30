@@ -26,51 +26,46 @@ const EditWorkout = ({ workouts, setWorkouts }) => {
   })
 
   return (
-    <main>
-      <form onSubmit={handleSubmit}>
+    <div className="l-centered">
+      <form style={{"display": "flex", "flex-direction": "column"}} className="form" onSubmit={handleSubmit}>
+        <label className="font-size--large" htmlFor="title">Title: </label>
+        <input
+          type="text"
+          value={title}
+          name="title"
+          placeholder={workout ? workout.title : ""}
+          onChange={(e) => setTitle(e.target.value)}
+        ></input>
+
+        <label className="font-size--large" htmlFor="date">Date: </label>
+        <input
+          type="date"
+          value={date}
+          name="date"
+          onChange={(e) => setDate(e.target.value)}
+        ></input>
+
+        <label className="font-size--large" htmlFor="notes">Notes: </label>
+        <textarea
+          name="notes"
+          value={notes}
+          placeholder="optional"
+          onChange={(e) => setNotes(e.target.value)}
+        ></textarea>
+
+        <label className="font-size--large">Weight: </label>
+        <Stepper
+          value={weight ? weight : 0}
+          onChange={setWeight}
+          stepSize={1}
+        />
+
         <div>
-          <label htmlFor="title">Title: </label>
-          <input
-            type="text"
-            value={title}
-            placeholder={workout ? workout.title : ""}
-            name="title"
-            onChange={(e) => setTitle(e.target.value)}
-            ></input>
-
-          <label htmlFor="date">Date: </label>
-          <input
-            type="date"
-            value={date}
-            name="date"
-            onChange={(e) => setDate(e.target.value)}
-          ></input>
+          <button className="button--form color-font--primary font-size--large" type="submit">Save</button>
+          <button className="button--form color-font--primary font-size--large" onClick={() => navigate('/')}>Cancel</button>
         </div>
-
-        <div>
-          <label>Weight: </label>
-          <Stepper
-            value={weight ? weight : 0}
-            onChange={setWeight}
-            stepSize={1}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="notes">Notes: </label>
-          <textarea
-            name="notes"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-          ></textarea>
-        </div>
-
-        <input type="submit" value="save"></input>
       </form>
-      <button onClick={() => navigate('/')}>
-        Cancel
-      </button>
-    </main>
+    </div>
   )
 }
 

@@ -43,7 +43,7 @@ const Registration = ({ setWorkouts, setUser }) => {
           name="username"
           onChange={handleChange}
         ></input>
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username"> Username</label>
       </div>
 
       <div>
@@ -53,7 +53,7 @@ const Registration = ({ setWorkouts, setUser }) => {
           name="password"
           onChange={handleChange}
         ></input>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password"> Password</label>
       </div>
 
       <div>
@@ -63,12 +63,12 @@ const Registration = ({ setWorkouts, setUser }) => {
           name="confirmation"
           onChange={handleChange}
         ></input>
-        <label htmlFor="confirm">Confirm password</label>
+        <label htmlFor="confirm"> Confirm password</label>
       </div>
       
-      <input type="submit" value="Register"></input>
+      <button className="button--form color-font--primary font-size--large" type="submit">Register</button>
 
-      <span onClick={handleGuestClick}>Continue as Guest</span>
+      <span onClick={handleGuestClick}> Continue as Guest</span>
     </form>
   )
 }

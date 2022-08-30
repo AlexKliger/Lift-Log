@@ -6,6 +6,7 @@
 .add-set {
     display: flex;
     gap: 2rem;
+    padding: 0.5rem 0;
 }
 
     .add-set__steppers {
@@ -17,25 +18,40 @@
     margin-bottom: 2rem;
 }
 
-.btn-add {
+button {
     background: none;
     border: none;
 }
 
+    .button--form {
+        padding: 0.5rem 1.25rem;
+        border: 3px solid var(--color-font--primary);
+        border-radius: 0.5rem;
+    }
+    /* Adjacent form buttons */
+    .button--form + .button--form {
+        margin-left: 1rem;
+    }
+
 .dropdown {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1.25rem;
     position: fixed;
     z-index: 1000;
     border: 1px solid white;
     border-radius: 0.8rem;
 }
 
-.dropdown--hidden {
-    display: none;
-}
+    .dropdown--hidden {
+        display: none;
+    }
 
-.dropdown-toggle {
-    padding: 0.5rem 1.5rem;
+    .dropdown-toggle {
+        padding: 0.5rem 1.5rem;
+    }
+
+.form input, .form textarea {
+    padding: 0.25rem;
+    font-size: var(--font-size--medium)
 }
 
 .form > *:not(:last-child) {
@@ -84,7 +100,7 @@ input[type=number] {
 
 .stepper {
     display: flex;
-    gap: 0.25rem;
+    gap: 1rem;
     align-items: center;
 }
 

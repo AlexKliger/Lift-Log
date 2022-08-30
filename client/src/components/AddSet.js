@@ -12,7 +12,7 @@ const AddSet = ({ handleSubmit }) => {
 
   return (
     <form className="add-set" onSubmit={onSubmit}>
-      <button className="btn-add" type="submit" value="+">
+      <button type="submit" value="+">
         <i className="fa fa-plus color-font--primary font-size--large"></i>
       </button>
 

@@ -22,7 +22,7 @@ const Login = ({ setWorkouts, setUser }) => {
   return (
       <form className="form" onSubmit={handleSubmit}>
         <span>{displayMessage}</span>
-        <h2 className="font-size--large">Login</h2>
+        <h2 className="font-size--large"> Login</h2>
         <div>
           <input
             onChange={handleChange}
@@ -31,7 +31,7 @@ const Login = ({ setWorkouts, setUser }) => {
             value={credentials.username}
             autoComplete="username"
             required />
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username"> Username</label>
         </div>
 
         <div>
@@ -42,11 +42,11 @@ const Login = ({ setWorkouts, setUser }) => {
             value={credentials.password}
             autoComplete="current-password"
             required />
-          <label htmlFor="current-password">Password</label>
+          <label htmlFor="current-password"> Password</label>
         </div>
 
         <div>
-          <button type="submit">Login</button>
+          <button className="button--form color-font--primary font-size--large" type="submit">Login</button>
         </div>
       </form>
   )
