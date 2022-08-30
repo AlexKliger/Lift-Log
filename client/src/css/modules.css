@@ -73,6 +73,10 @@ button {
 
     .header__title {
         padding: 0.5rem 1rem;
+        max-width: 70%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
 input[type=number] {
