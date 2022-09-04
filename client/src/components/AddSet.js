@@ -12,10 +12,6 @@ const AddSet = ({ handleSubmit }) => {
 
   return (
     <form className="add-set" onSubmit={onSubmit}>
-      <button type="submit" value="+">
-        <i className="fa fa-plus color-font--primary font-size--large"></i>
-      </button>
-
       <div className="add-set__steppers">
       <Stepper
         value={weight}
@@ -30,6 +26,9 @@ const AddSet = ({ handleSubmit }) => {
       />
       </div>
 
+      <button type="submit" value="+">
+        <i className="fa fa-plus color-font--primary font-size--large"></i>
+      </button>
   
     </form>
   )

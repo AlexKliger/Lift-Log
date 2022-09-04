@@ -19,15 +19,15 @@ const Lift = ({lift, setWorkouts, deleteLift}) => {
     <li className="lift">
       <div className="lift__header">
         <i
-          className="fa fa-trash font-size--large"
-          onClick={() => deleteLift(lift._id)}
+          className={`fa fa-angle-${isCollapsed ? 'down' : 'up'} font-size--large`}
+          onClick={() => setIsCollapsed(!isCollapsed)}
         ></i>
 
         <h3 className="lift__name font-size--large">{lift.name}</h3>
-        
+
         <i
-          className={`fa fa-angle-${isCollapsed ? 'down' : 'up'} font-size--large`}
-          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="fa fa-trash font-size--large"
+          onClick={() => deleteLift(lift._id)}
         ></i>
       </div>
 
