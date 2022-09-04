@@ -12,8 +12,8 @@ const EditWorkout = ({ workouts, setWorkouts }) => {
   const [title, setTitle] = useState(workout ? workout.title : "")
   const [weight, setWeight] = useState(workout ? workout.weight : 0)
   const [notes, setNotes] = useState(workout ? workout.notes : "")
-  const [date, setDate] = useState(workout.date ? workout.date.substring(0, 10) : Date.now)
-
+  const [date, setDate] = useState(workout.date ? workout.date.split('T')[0] : new Date(Date.now()).toISOString().split('T')[0])
+  
   const handleSubmit = useCallback(async (e) => {
     const body = {title: title, weight: weight, notes: notes, date: date}
     e.preventDefault()
@@ -27,7 +27,7 @@ const EditWorkout = ({ workouts, setWorkouts }) => {
 
   return (
     <div className="l-centered">
-      <form style={{"display": "flex", "flex-direction": "column"}} className="form" onSubmit={handleSubmit}>
+      <form style={{"display": "flex", "flexDirection": "column"}} className="form" onSubmit={handleSubmit}>
         <label className="font-size--large" htmlFor="title">Title: </label>
         <input
           type="text"
