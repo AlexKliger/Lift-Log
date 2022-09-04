@@ -28,6 +28,7 @@ const Workout = ({workout, setWorkouts, dropdown, setDropdown}) => {
     <section className="workout">
       <div className="workout__header">
         <h2 className="workout__title font-size--large">{workout.title}</h2>
+        <span>{workout.date.split('T')[0]}</span>
         <nav className="workout__nav">
           {workout.notes.length > 0 && <i onClick={handleClickOnNote} className="fa fa-sticky-note-o font-size--large"></i>}
           <i className="fa fa-trash font-size--large" onClick={async () => setWorkouts(await deleteWorkout(workout._id))}></i>
