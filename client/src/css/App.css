@@ -5,12 +5,11 @@
     --font-size--header: 48px;
 }
 
-.l-centered {
-    width: 93%;
+.margin-centered {
     margin: 0 auto;
 }
 
 .app {
-    overflow: auto; /* Needed to fix react bug where root element does not extend to 100vh */
-    height: 100vh;
+    min-height: 100vh;
+    overflow: auto;
 }

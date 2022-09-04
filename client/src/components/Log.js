@@ -2,7 +2,7 @@ import Workout from './Workout'
 
 const Log = ({workouts, setWorkouts, dropdown, setDropdown}) => {
   return(
-    <div className="l-centered">
+    <div className="log margin-centered">
       {!workouts
       ?
       'Loading...'
