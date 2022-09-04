@@ -13,3 +13,7 @@
     min-height: 100vh;
     overflow: auto;
 }
+
+html {
+    font-family: sans-serif, Helvetica, Arial 
+}
