@@ -6,7 +6,7 @@ const Lift = ({lift, setWorkouts, deleteLift}) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const addSet = useCallback(async (weight, reps) => {
-    const body = {sets: [...lift.sets, `${weight}x${reps}`]}
+    const body = {sets: [...lift.sets, {weight: weight, reps: reps}]}
     setWorkouts(await updateLift(lift._id, body))
   }, [lift])
 
@@ -35,7 +35,7 @@ const Lift = ({lift, setWorkouts, deleteLift}) => {
       <div>
         <div className="lift__sets">
         {lift.sets.map((set, key) => (
-          <span key={key}>{set}</span>
+          <span key={key}>{set.weight + ' lbs. x ' + set.reps}</span>
         ))}
 
         {lift.sets.length > 0 &&
