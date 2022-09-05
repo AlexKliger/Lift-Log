@@ -106,9 +106,14 @@ input[type=number] {
 
 .lift__sets {
     display: flex;
-    justify-content: space-between;
     gap: 0.5rem;
     flex-wrap: wrap;
+    position: relative;
+}
+
+.lift__delete-set {
+    position: absolute;
+    right: 0;
 }
 
 .log {

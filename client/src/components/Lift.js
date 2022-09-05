@@ -33,15 +33,15 @@ const Lift = ({lift, setWorkouts, deleteLift}) => {
 
       {!isCollapsed &&
       <div>
-        <div className="lift__sets">
-        {lift.sets.map((set, key) => (
-          <span key={key}>{set.weight + ' lbs. x ' + set.reps}</span>
-        ))}
+        <ul className="lift__sets">
+          {lift.sets.map((set, key) => (
+          <li key={key}>{set.weight + ' lb. x ' + set.reps}</li>
+          ))}
 
-        {lift.sets.length > 0 &&
-          <span><i onClick={deleteSet} className="fa fa-minus color-font--primary"></i></span>
-        }
-        </div>
+          {lift.sets.length > 0 &&
+          <span className="lift__delete-set"><i onClick={deleteSet} className="fa fa-minus color-font--primary"></i></span>
+          }
+        </ul>
 
         <AddSet handleSubmit={addSet} />
       </div>
