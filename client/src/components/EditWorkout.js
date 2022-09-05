@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import Stepper from "../components/Stepper"
+import Stepper from "./core/Stepper"
 import { createWorkout, updateWorkout } from '../util/api'
 
 const newWorkout = {title: "New Workout", notes: ""}

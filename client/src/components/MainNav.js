@@ -1,4 +1,4 @@
-import Checkbox from './Checkbox'
+import Checkbox from './core/Checkbox'
 import { logout } from '../util/api'
 import { useCallback } from 'react'
 

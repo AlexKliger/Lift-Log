@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ThemeContext } from './context/ThemeContext'
 /* Component imports */
-import Dropdown from './components/Dropdown'
+import Dropdown from './components/core/Dropdown'
 import EditWorkout from './components/EditWorkout'
 import Header from './components/Header'
 import Log from './components/Log'

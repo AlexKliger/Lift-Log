@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import Stepper from "./Stepper"
+import Stepper from "./core/Stepper"
 
 const AddSet = ({ handleSubmit }) => {
   const [weight, setWeight] = useState(0)
