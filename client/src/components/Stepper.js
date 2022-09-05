@@ -1,19 +1,21 @@
-import { useCallback } from 'react'
+import { useCallback } from "react"
 
-const Stepper = ({onChange, value, stepSize}) => {
+const Stepper = ({onChange, value, stepSize, label}) => {
   const handleChange = useCallback((e) => {
     onChange(e.target.value)
   })
 
   return (
     <div className="stepper">
-      <label htmlFor="number"></label>
-      <input
-        className="stepper__input"
-        type="number"
-        value={value}
-        onChange={handleChange}>
-      </input>
+      <label htmlFor="number">
+        <input
+          className="stepper__input"
+          type="number"
+          value={value}
+          onChange={handleChange}>
+        </input>
+        {label || ""}
+      </label>
       <div>
         <i
           className="fa fa-toggle-up color-font--primary font-size--header"

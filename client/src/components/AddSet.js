@@ -17,12 +17,14 @@ const AddSet = ({ handleSubmit }) => {
         value={weight}
         onChange={setWeight}
         stepSize={5}
+        label={" lbs."}
       />
 
       <Stepper
         value={reps}
         onChange={setReps}
         stepSize={1}
+        label={" reps"}
       />
       </div>
 
