@@ -20,7 +20,7 @@ const Workout = ({workout, setWorkouts, dropdown, setDropdown}) => {
   }, [workout])
 
   const handleClickOnNote = (e) => {
-    const position = {right: e.target.offsetWidth, top: e.target.offsetTop}
+    const position = {left: e.pageX, top: e.pageY}
     setDropdown({...dropdown, visible: true, content: <DropdownContent notes={workout.notes} />, position: position})
   }
 
