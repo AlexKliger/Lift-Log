@@ -1,13 +1,11 @@
 /* Package imports */
 import { useContext, useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
 import { ThemeContext } from './context/ThemeContext'
 /* Component imports */
 import Dropdown from './components/core/Dropdown'
-import EditWorkout from './components/EditWorkout'
 import Header from './components/Header'
-import Log from './components/Log'
 import Login from './components/Login'
+import Pages from './components/Pages'
 import Registration from './components/Registration'
 import { getWorkouts, getUser } from './util/api'
 /* CSS imports */
@@ -53,34 +51,13 @@ function App() {
         setWorkouts={setWorkouts}
         setUser={setUser}
       />
-      <Routes>
-        <Route
-          path="/"
-          element={<Log
-                      workouts={workouts}
-                      setWorkouts={setWorkouts}
-                      dropdown={dropdown}
-                      setDropdown={setDropdown}
-                  />}
-        >
-        </Route>
-        <Route path="edit">
-          <Route
-            path=":id"
-            element={<EditWorkout
-                        workouts={workouts}
-                        setWorkouts={setWorkouts}
-                    />}
-          ></Route>
 
-          <Route
-            path="new"
-            element={<EditWorkout
-                      setWorkouts={setWorkouts}
-                    />}
-          ></Route>
-        </Route>
-      </Routes>
+      <Pages
+        workouts={workouts}
+        setWorkouts={setWorkouts}
+        dropdown={dropdown}
+        setDropdown={setDropdown}
+      />
 
       {!user 
         &&
