@@ -1,10 +1,4 @@
-import { useCallback } from "react"
-
-const Stepper = ({onChange, value, stepSize, label}) => {
-  const handleChange = useCallback((e) => {
-    onChange(e.target.value)
-  })
-
+ const Stepper = ({onChange, value, stepSize, label}) => {
   return (
     <div className="stepper">
       <label htmlFor="number">
@@ -12,7 +6,7 @@ const Stepper = ({onChange, value, stepSize, label}) => {
           className="stepper__input"
           type="number"
           value={value}
-          onChange={handleChange}>
+          onChange={e => onChange(e.target.value)}>
         </input>
         {label || ""}
       </label>
