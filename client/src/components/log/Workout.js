@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import Lift from './Lift'
-import AddItem from './core/AddItem'
-import { deleteWorkout, updateWorkout } from '../util/api'
+import AddItem from '../core/AddItem'
+import { deleteWorkout, updateWorkout } from '../../util/api'
 
 const DropdownContent = ({notes}) => (
   <p>{notes}</p>

@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
-import AddSet from './AddSet'
-import { updateLift } from '../util/api'
+import AddSet from '../AddSet'
+import { updateLift } from '../../util/api'
 
 const Lift = ({lift, setWorkouts, deleteLift}) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
