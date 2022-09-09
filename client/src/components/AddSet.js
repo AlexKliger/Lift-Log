@@ -4,7 +4,7 @@ import Stepper from "./core/Stepper"
 const AddSet = ({ handleSubmit }) => {
   const [weight, setWeight] = useState(0)
   const [reps, setReps] = useState(0)
-  
+
   const onSubmit = useCallback((e) => {
     handleSubmit(weight, reps)
     e.preventDefault()
@@ -17,6 +17,7 @@ const AddSet = ({ handleSubmit }) => {
         value={weight}
         onChange={setWeight}
         stepSize={5}
+        min={0}
         label={" lb."}
       />
 
@@ -24,6 +25,7 @@ const AddSet = ({ handleSubmit }) => {
         value={reps}
         onChange={setReps}
         stepSize={1}
+        min={0}
         label={" reps"}
       />
       </div>

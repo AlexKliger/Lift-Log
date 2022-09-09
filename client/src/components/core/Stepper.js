@@ -1,4 +1,4 @@
- const Stepper = ({onChange, value, stepSize, label}) => {
+ const Stepper = ({onChange, value, stepSize, min, label}) => {
   return (
     <div className="stepper">
       <label htmlFor="number">
@@ -19,7 +19,7 @@
         <i
           style={{"display": "block"}}
           className="fa fa-toggle-down color-font--primary font-size--header"
-          onClick={() => onChange(value - stepSize)}
+          onClick={() => onChange(value - stepSize > min ? value - stepSize : min)}
         >
         </i>
       </div>
