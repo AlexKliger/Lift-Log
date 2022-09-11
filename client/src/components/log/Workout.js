@@ -19,10 +19,12 @@ const Workout = ({workout, setWorkouts, dropdown, setDropdown}) => {
     setWorkouts(await updateWorkout(workout._id, body))
   }, [workout])
 
-  const handleClickOnNote = (e) => {
-    const position = {left: e.pageX, top: e.pageY}
+  const handleClickOnNote = useCallback(e => {
+    const yOffset = window.scrollY
+    const xOffset = window.scrollX
+    const position = {left: e.pageX - xOffset, top: e.pageY - yOffset}
     setDropdown({...dropdown, visible: true, content: <DropdownContent notes={workout.notes} />, position: position})
-  }
+  })
 
   return (
     <section className="workout">
