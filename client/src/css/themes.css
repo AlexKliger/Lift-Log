@@ -1,3 +1,11 @@
+:root {
+    --font-size--extra-small: 14px;
+    --font-size--small: 16px;
+    --font-size--medium: 18px;
+    --font-size--large: 24px;
+    --font-size--header: 48px;
+}
+
 [data-theme="light"] {
     --color-bg--primary: #ffffff;
     --color-bg--secondary: #f9f9f9;
@@ -26,6 +34,10 @@
 
 .color-font--secondary {
     color: var(--color-font--secondary);
+}
+
+.font-size--extra-small {
+    font-size: var(--font-size--extra-small)
 }
 
 .font-size--large {

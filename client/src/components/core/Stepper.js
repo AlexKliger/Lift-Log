@@ -1,7 +1,7 @@
  const Stepper = ({onChange, value, stepSize, min, label}) => {
   return (
     <div className="stepper">
-      <label htmlFor="number">
+      <label className="font-size--extra-small" htmlFor="number">
         <input
           className="stepper__input"
           type="number"

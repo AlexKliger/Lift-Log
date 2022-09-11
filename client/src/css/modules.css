@@ -106,18 +106,20 @@ input[type=number] {
 
 .lift__sets {
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    position: relative;
+    justify-content: space-between;
+    gap: 0.75rem;
 }
 
-.lift__delete-set {
-    position: absolute;
-    right: 0;
+.lift__set-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    column-gap: 0.25rem;
+    row-gap: 0.5rem;
 }
 
 .log {
-    max-width: 400px;
+    max-width: 360px;
     padding: 0 1rem;
 }
 
