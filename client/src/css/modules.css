@@ -6,7 +6,7 @@
 .add-set {
     display: flex;
     gap: 2rem;
-    padding: 0.5rem 0;
+    padding: 0.5rem;
 }
 
     .add-set__steppers {
@@ -91,6 +91,7 @@ input[type=number] {
 
 .lift__header {
     margin-bottom: 1rem;
+    padding-left: 0.5rem;
     position: relative;
 }
 
