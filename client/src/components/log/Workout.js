@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import Lift from './Lift'
+import Lift from './lift/Lift'
 import AddItem from '../core/AddItem'
 import { deleteWorkout, updateWorkout } from '../../util/api'
 
