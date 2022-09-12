@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Lift from './lift/Lift'
 import AddItem from '../core/AddItem'
@@ -9,6 +9,8 @@ const DropdownContent = ({notes}) => (
 )
 
 const Workout = ({workout, setWorkouts, dropdown, setDropdown}) => {
+  const [isCollapsed, setIsCollapsed] = useState(false)
+
   const addLift = useCallback(async (name) => {
     const body = {lifts: [...workout.lifts, {name: name, sets: []}]}
     setWorkouts(await updateWorkout(workout._id, body))
@@ -29,6 +31,10 @@ const Workout = ({workout, setWorkouts, dropdown, setDropdown}) => {
   return (
     <section className="workout">
       <div className="workout__header">
+        <i  
+          className={`fa fa-angle-${isCollapsed ? 'down' : 'up'} font-size--large`}
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        ></i>
         <h2 className="workout__title font-size--large">{workout.title}</h2>
         <span>{workout.date.split('T')[0]}</span>
         <nav className="workout__nav">
@@ -39,6 +45,8 @@ const Workout = ({workout, setWorkouts, dropdown, setDropdown}) => {
           </Link>
         </nav>
       </div>
+      
+      {!isCollapsed && 
       <ul>
       {workout.lifts.map((lift, key) => (
         <Lift lift={lift} deleteLift={deleteLift} setWorkouts={setWorkouts} key={key} />
@@ -50,6 +58,7 @@ const Workout = ({workout, setWorkouts, dropdown, setDropdown}) => {
           />
         </li>
       </ul>
+      }
     </section>
   )
 }
