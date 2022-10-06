@@ -1,20 +1,20 @@
 # Lift Log
-A journaling application for weight lifting.
+A fitness journaling application that I made to suit my personal needs and whomever finds it useful.
 
 ## How It's Made:
 React, Express, MongoDB
 
 ### Server:
-The express server routes to a RESTful API that supports CRUD operations.
+The backend server is built using express.js which routes to a RESTful API that supports CRUD operations.
 
-The server only responds with the index.html file from the client's React build folder. All major page routing is then handled by the frontend.
+Users are able to register accounts and login using a local strategy. Username and hashed passwords are stored on MongoDB and authentication/session management is handled by passport.js.
 
-Authentication is handled by passport.js and uses a local strategy.
-
-Data is stored using mongoDB on mongoAtlas and models are defined with the mongoose package.
+Data is stored using MongoDB on Mongo Atlas and models are defined as schema using Mongoose.
 
 ### Client:
-The frontend is built with React. Various components make up the user interface that make CRUD requests to the backend.
+The frontend is built using React.js. Requests are made to the backend using the fetch API and displays the returned data in a convenient and accesible layout.
 
-## Lessons Learned:
-My first attempt at a full stack application using the MERN stack.
+## Optimizations
+
+### Authentication & Session Management
+Using a local strategy to store and authenticate users poses security risks and is not scalable. A better solution may involve using Google/Microsoft/Facebook/etc authentication services.
